@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home/Index">
+                <img class="me-3" src="~/images/logo/Gallerylogo.png" alt="Image Gallery"/>Image Gallery
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/Home/Index">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Gallery">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Privacy">Privacy</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/About">About Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                   <input class="form-control me-2"
+                           type="search"
+                           placeholder="Search">
+                    <button class="btn btn-success">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!------- PAGE CONTENT ------->
+    <main class="flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="gallery-footer">
+        <div class="container-fluid px-5">
+            <div class="row gy-4">
+                <!-- Website -->
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="footer-logo">
+                        <img asp-append-version="true" src="~/images/logo/Gallerylogo.png" alt="Image Gallery" />
+                        Image Gallery
+                    </h3>
+                    <p class="footer-text">
+                        Explore and enjoy beautiful image collections from around the world.
+                        Discover stunning moments, landscapes, wildlife and much more.
+                    </p>
+                </div>
+                <!-- Quick Links -->
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/Home/Index">Home</a></li>
+                        <li><a href="/Home/Gallery">Gallery</a></li>
+                        <li><a href="/Home/About">About</a></li>
+                        <li><a href="/Home/Contact">Contact</a></li>
+                        <li><a href="/Home/Privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <h4 class="footer-title">Contact</h4>
+                    <p>
+                        <i class="bi bi-envelope-fill"></i>
+                        ankitk66135@gmail.com
+                    </p>
+                    <p>
+                        <i class="bi bi-telephone-fill"></i>
+                        +91 9520452038
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/mr.ankit_baghel45/" target="_blank">
+                            <img src="~/images/logo/instagram.png" alt="Instagram">
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/ankit-kumar-a28229412" target="_blank">
+                            <img src="~/images/logo/linkden.png" alt="LinkedIn">
+                        </a>
+
+                        <a href="https://github.com/AnkitFullStack45" target="_blank">
+                            <img src="~/images/logo/icons8-github-250.png" alt="GitHub">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-line">
+            <div class="footer-bottom text-center">
+                <p>
+                    © 2026 Image Gallery. All Rights Reserved.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
