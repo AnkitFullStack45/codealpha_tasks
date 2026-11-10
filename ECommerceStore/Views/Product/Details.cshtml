@@ -1,0 +1,315 @@
+﻿@model ECommerceStore.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container py-5">
+
+    <div class="row g-5 align-items-start">
+
+        <!-- ================= PRODUCT IMAGE ================= -->
+        <div class="col-lg-6">
+
+            <div class="product-image-box">
+
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Url.Content("~/Images/" + Model.ImageUrl)"
+                         class="product-detail-image"
+                         alt="@Model.Name" />
+                }
+                else
+                {
+                    <div class="no-image">
+                        <i class="fa-solid fa-image"></i>
+                        <span>No Image Available</span>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PRODUCT INFORMATION ================= -->
+        <div class="col-lg-6">
+
+            <!-- Product Name -->
+            <h1 class="product-title">
+                @Model.Name
+            </h1>
+
+            <!-- Brand -->
+            @if (!string.IsNullOrEmpty(Model.Brand))
+            {
+                <p class="product-brand">
+                    @Model.Brand
+                </p>
+            }
+
+            <!-- Price -->
+            <div class="product-price">
+                ₹@Model.Price.ToString("N0")
+            </div>
+
+            <hr />
+
+            <!-- Description -->
+            <div class="product-description">
+
+                <h5 class="fw-bold">
+                    Description
+                </h5>
+
+                <p>
+                    @Model.Description
+                </p>
+
+            </div>
+
+
+            <!-- ================= SPECIFICATIONS ================= -->
+
+            <h4 class="specification-title">
+                Specifications
+            </h4>
+
+            <div class="table-responsive">
+
+                <table class="table specification-table">
+
+                    <tbody>
+
+                        @if (!string.IsNullOrEmpty(Model.Processor))
+                        {
+                            <tr>
+                                <th>Processor</th>
+                                <td>@Model.Processor</td>
+                            </tr>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.RAM))
+                        {
+                            <tr>
+                                <th>RAM</th>
+                                <td>@Model.RAM</td>
+                            </tr>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Storage))
+                        {
+                            <tr>
+                                <th>Storage</th>
+                                <td>@Model.Storage</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================= BUTTONS ================= -->
+
+            <div class="product-buttons">
+
+                <button type="button"
+                        class="btn btn-primary btn-lg add-cart-btn">
+
+                    <i class="fa-solid fa-cart-shopping me-2"></i>
+                    Add to Cart
+
+                </button>
+
+                <!-- Add To Cart -->
+                <a asp-controller="Cart"
+                   asp-action="AddToCart"
+                   asp-route-id="@Model.Id"
+                   class="btn cart-bt add-to-cart-btn"
+                   data-id="@Model.Id"
+                   data-name="@Model.Name"
+                   data-price="@Model.Price"
+                   data-image="@Model.ImageUrl">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PAGE CSS ================= -->
+
+<style>
+
+    /* Product Image Container */
+
+    .product-image-box {
+        width: 100%;
+        height: 520px;
+        background: #f8f9fa;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 1px solid #eeeeee;
+    }
+
+
+    /* Product Image */
+
+    .product-detail-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 25px;
+        transition: transform 0.3s ease;
+    }
+
+
+        .product-detail-image:hover {
+            transform: scale(1.04);
+        }
+
+
+    /* No Image */
+
+    .no-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #999;
+        gap: 10px;
+    }
+
+
+        .no-image i {
+            font-size: 50px;
+        }
+
+
+    /* Product Title */
+
+    .product-title {
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+
+
+    /* Brand */
+
+    .product-brand {
+        font-size: 18px;
+        color: #777;
+        margin-bottom: 15px;
+    }
+
+
+    /* Price */
+
+    .product-price {
+        font-size: 32px;
+        font-weight: 700;
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+
+
+    /* Description */
+
+    .product-description {
+        margin-top: 20px;
+        line-height: 1.7;
+        color: #555;
+    }
+
+
+    /* Specification Heading */
+
+    .specification-title {
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+
+    /* Specification Table */
+
+    .specification-table {
+        border: 1px solid #e5e5e5;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+
+        .specification-table th {
+            width: 35%;
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+
+        .specification-table td,
+        .specification-table th {
+            padding: 14px;
+        }
+
+
+    /* Buttons */
+
+    .product-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+
+    .add-cart-btn,
+    .continue-btn {
+        padding: 12px 25px;
+        border-radius: 10px;
+    }
+
+
+    /* Mobile */
+
+    @@media (max-width: 768px) {
+
+        .product-image-box {
+            height: 350px;
+        }
+
+        .product-title {
+            font-size: 28px;
+        }
+
+        .product-price {
+            font-size: 26px;
+        }
+
+        .product-buttons {
+            flex-direction: column;
+        }
+
+        .add-cart-btn,
+        .continue-btn {
+            width: 100%;
+        }
+    }
+
+</style>

@@ -1,0 +1,134 @@
+﻿@model ECommerceStore.Models.Order
+@{
+    ViewData["Title"] = "Order Confirmed";
+}
+<div class="confirmation-page">
+    <div class="confirmation-card">
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <h1>
+            Order Placed Successfully!
+        </h1>
+        <p class="success-message">
+            Thank you for your purchase.
+            Your order has been received successfully.
+        </p>
+        <!-- ORDER NUMBER -->
+        <div class="order-number">
+            <span>
+                Order Number
+            </span>
+
+            <strong>
+                #@Model.Id
+            </strong>
+
+        </div>
+        <!-- ORDER DETAILS -->
+        <div class="order-details">
+            <div class="detail-row">
+
+                <span>
+                    Customer
+                </span>
+
+                <strong>
+                    @Model.CustomerName
+                </strong>
+
+            </div>
+            <div class="detail-row">
+
+                <span>
+                    Email
+                </span>
+
+                <strong>
+                    @Model.CustomerEmail
+                </strong>
+            </div>
+            <div class="detail-row">
+
+                <span>
+                    Order Date
+                </span>
+
+                <strong>
+                    @Model.OrderDate.ToString("dd MMM yyyy, hh:mm tt")
+                </strong>
+            </div>
+            <div class="detail-row">
+
+                <span>
+                    Status
+                </span>
+
+                <strong class="status">
+                    @Model.Status
+                </strong>
+
+            </div>
+            <div class="detail-row total-row">
+
+                <span>
+                    Total Amount
+                </span>
+
+                <strong>
+                    ₹@Model.TotalAmount.ToString("N0")
+                </strong>
+            </div>
+        </div>
+        <!-- SHIPPING ADDRESS -->
+        <div class="shipping-box">
+
+            <div class="shipping-icon">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+            </div>
+            <div>
+
+                <h4>
+                    Shipping Address
+                </h4>
+
+                <p>
+                    @Model.ShippingAddress
+                </p>
+
+            </div>
+
+        </div>
+        <!-- BUTTONS -->
+
+        <div class="confirmation-actions">
+
+            <a asp-controller="Product"
+               asp-action="Laptop"
+               class="continue-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Continue Shopping
+
+            </a>
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="home-btn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

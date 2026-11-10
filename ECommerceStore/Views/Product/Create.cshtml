@@ -1,0 +1,270 @@
+﻿@model ECommerceStore.ViewModels.productViewModel
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+<div class="product-page">
+
+    <div class="container">
+
+        <div class="product-card">
+
+            <!-- Header -->
+            <div class="product-header">
+
+                <h4>
+                    <i class="fa-solid fa-box-open me-2"></i>
+                    Add New Product
+                </h4>
+
+                <small class="text-muted">
+                    Add product information to your store
+                </small>
+
+            </div>
+
+            <!-- Body -->
+            <div class="product-body">
+
+                <form asp-action="Create"
+                      method="post"
+                      enctype="multipart/form-data">
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="mb-3">
+
+                        <label asp-for="Name"
+                               class="form-label fw-semibold">
+                            Product Name
+                        </label>
+
+                        <input asp-for="Name"
+                               class="form-control"
+                               placeholder="Enter product name" />
+
+                        <span asp-validation-for="Name"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="mb-3">
+
+                        <label asp-for="Brand"
+                               class="form-label fw-semibold">
+                            Brand
+                        </label>
+
+                        <input asp-for="Brand"
+                               class="form-control"
+                               placeholder="e.g. HP, Apple, Samsung, Nike" />
+
+                        <span asp-validation-for="Brand"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-3">
+
+                        <label asp-for="CategoryId"
+                               class="form-label fw-semibold">
+                            Category
+                        </label>
+
+                        <select asp-for="CategoryId"
+                                asp-items="ViewBag.Categories"
+                                class="form-select">
+
+                            <option value="0">
+                                -- Select Category --
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="CategoryId"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+
+                        <label asp-for="Price"
+                               class="form-label fw-semibold">
+                            Price
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                ₹
+                            </span>
+
+                            <input asp-for="Price"
+                                   class="form-control"
+                                   type="number"
+                                   step="0.01"
+                                   min="0"
+                                   placeholder="Enter price" />
+
+                        </div>
+
+                        <span asp-validation-for="Price"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Specifications -->
+                    <div class="specification-title">
+                        <i class="fa-solid fa-sliders me-2"></i>
+                        Product Specifications
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Processor -->
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="Processor"
+                                   class="form-label fw-semibold">
+                                Processor
+                            </label>
+
+                            <input asp-for="Processor"
+                                   class="form-control"
+                                   placeholder="e.g. Intel i5, Ryzen 5" />
+
+                            <span asp-validation-for="Processor"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- RAM -->
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="RAM"
+                                   class="form-label fw-semibold">
+                                RAM
+                            </label>
+
+                            <input asp-for="RAM"
+                                   class="form-control"
+                                   placeholder="e.g. 8GB, 16GB" />
+
+                            <span asp-validation-for="RAM"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Storage -->
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="Storage"
+                                   class="form-label fw-semibold">
+                                Storage
+                            </label>
+
+                            <input asp-for="Storage"
+                                   class="form-control"
+                                   placeholder="e.g. 512GB SSD, 1TB HDD" />
+
+                            <span asp-validation-for="Storage"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Image -->
+                    <div class="mb-3">
+
+                        <label asp-for="ImageFile"
+                               class="form-label fw-semibold">
+                            Product Image
+                        </label>
+
+                        <input asp-for="ImageFile"
+                               class="form-control"
+                               type="file"
+                               accept=".jpg,.jpeg,.png,.webp" />
+
+                        <span asp-validation-for="ImageFile"
+                              class="text-danger">
+                        </span>
+
+                        <div class="form-text">
+                            JPG, JPEG, PNG or WEBP
+                        </div>
+
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-4">
+
+                        <label asp-for="Description"
+                               class="form-label fw-semibold">
+                            Description
+                        </label>
+
+                        <textarea asp-for="Description"
+                                  class="form-control"
+                                  rows="5"
+                                  placeholder="Enter product description">
+                        </textarea>
+
+                        <span asp-validation-for="Description"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex gap-2">
+
+                        <button type="submit"
+                                class="btn btn-dark">
+
+                            <i class="fa-solid fa-plus me-2"></i>
+                            Add Product
+
+                        </button>
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+
+                            <i class="fa-solid fa-arrow-left me-2"></i>
+                            Back
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

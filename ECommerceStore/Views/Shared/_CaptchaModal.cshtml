@@ -1,0 +1,429 @@
+﻿<!-- CAPTCHA MODAL -->
+@inject IConfiguration Configuration
+<div class="modal fade"
+     id="captchaModal"
+     tabindex="-1"
+     aria-labelledby="captchaModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered captcha-dialog">
+
+        <div class="modal-content captcha-modal-content">
+
+            <button type="button"
+                    class="btn-close captcha-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close">
+            </button>
+
+            <div class="modal-body captcha-body">
+
+                <div class="captcha-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <h4 id="captchaModalLabel">
+                    Verify you are human
+                </h4>
+
+                <p class="captcha-subtitle">
+                    Please complete this quick security check to continue.
+                </p>
+
+                <!-- GOOGLE CAPTCHA -->
+                <div class="captcha-box">
+
+                    <div id="googleCaptcha"
+                         data-sitekey="@Configuration["Recaptcha:SiteKey"]">
+                    </div>
+
+                </div>
+
+                <div id="captchaError"
+                     class="captcha-error"
+                     style="display:none;">
+
+                    <i class="bi bi-exclamation-circle"></i>
+
+                    Please complete the CAPTCHA first.
+
+                </div>
+
+                <!-- CONTINUE BUTTON -->
+                <button type="button"
+                        id="captchaContinueBtn"
+                        class="btn captcha-continue-btn"
+                        disabled>
+
+                    <span id="captchaButtonText">
+                        Continue
+                    </span>
+
+                    <span id="captchaButtonLoader"
+                          class="spinner-border spinner-border-sm"
+                          style="display:none;">
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+    let captchaWidgetId = null;
+    let captchaToken = null;
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const captchaModal =
+            document.getElementById("captchaModal");
+
+        const continueButton =
+            document.getElementById("captchaContinueBtn");
+
+
+        if (!captchaModal) {
+            console.error("CAPTCHA modal not found.");
+            return;
+        }
+
+
+        // ==========================================
+        // WHEN CAPTCHA MODAL OPENS
+        // ==========================================
+
+        captchaModal.addEventListener(
+            "shown.bs.modal",
+            function () {
+
+                console.log("CAPTCHA modal opened.");
+
+                renderCaptcha();
+
+            }
+        );
+
+
+        // ==========================================
+        // CONTINUE BUTTON
+        // ==========================================
+
+        continueButton.addEventListener(
+            "click",
+            function () {
+
+                if (!captchaToken) {
+
+                    document.getElementById(
+                        "captchaError"
+                    ).style.display = "block";
+
+                    return;
+                }
+
+
+                const loginForm =
+                    document.querySelector(
+                        ".account-login-container form"
+                    );
+
+
+                if (!loginForm) {
+
+                    console.error(
+                        "Login form not found."
+                    );
+
+                    return;
+                }
+
+
+                let captchaInput =
+                    loginForm.querySelector(
+                        'input[name="g-recaptcha-response"]'
+                    );
+
+
+                if (!captchaInput) {
+
+                    captchaInput =
+                        document.createElement("input");
+
+                    captchaInput.type = "hidden";
+
+                    captchaInput.name =
+                        "g-recaptcha-response";
+
+                    loginForm.appendChild(
+                        captchaInput
+                    );
+                }
+
+
+                captchaInput.value =
+                    captchaToken;
+
+
+                console.log(
+                    "CAPTCHA token added to login form."
+                );
+
+
+                loginForm.submit();
+
+            }
+        );
+
+    });
+
+
+    // ==========================================
+    // RENDER CAPTCHA
+    // ==========================================
+
+    function renderCaptcha() {
+
+        const captchaElement =
+            document.getElementById("googleCaptcha");
+
+
+        if (!captchaElement) {
+
+            console.error(
+                "googleCaptcha element not found."
+            );
+
+            return;
+        }
+
+
+        if (captchaWidgetId !== null) {
+
+            console.log(
+                "CAPTCHA already rendered."
+            );
+
+            return;
+        }
+
+
+        if (typeof grecaptcha === "undefined") {
+
+            console.log(
+                "Google reCAPTCHA is not loaded yet."
+            );
+
+
+            setTimeout(
+                renderCaptcha,
+                500
+            );
+
+            return;
+        }
+
+
+        console.log(
+            "Google reCAPTCHA loaded."
+        );
+
+
+        captchaWidgetId =
+            grecaptcha.render(
+                captchaElement,
+                {
+
+                    sitekey:
+                        "@Configuration["Recaptcha:SiteKey"]",
+
+
+                    callback:
+                        function (token) {
+
+                            console.log(
+                                "CAPTCHA completed."
+                            );
+
+
+                            captchaToken =
+                                token;
+
+
+                            document.getElementById(
+                                "captchaContinueBtn"
+                            ).disabled = false;
+
+
+                            document.getElementById(
+                                "captchaError"
+                            ).style.display = "none";
+
+                        },
+
+
+                    "expired-callback":
+                        function () {
+
+                            console.log(
+                                "CAPTCHA expired."
+                            );
+
+
+                            captchaToken = null;
+
+
+                            document.getElementById(
+                                "captchaContinueBtn"
+                            ).disabled = true;
+
+                        },
+
+
+                    "error-callback":
+                        function () {
+
+                            console.error(
+                                "CAPTCHA error."
+                            );
+
+
+                            captchaToken = null;
+
+
+                            document.getElementById(
+                                "captchaContinueBtn"
+                            ).disabled = true;
+
+                        }
+
+                }
+            );
+        console.log(
+            "CAPTCHA rendered successfully."
+        );
+
+    }
+
+</script>
+<style>
+
+    .captcha-dialog {
+        max-width: 410px;
+    }
+
+    .captcha-modal-content {
+        position: relative;
+        border: none;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+    }
+
+    .captcha-body {
+        padding: 35px 30px 32px;
+        text-align: center;
+    }
+
+    .captcha-icon {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #eef5ff;
+        color: #0d6efd;
+        font-size: 27px;
+    }
+
+    .captcha-body h4 {
+        margin: 0 0 8px;
+        color: #202124;
+        font-size: 21px;
+        font-weight: 700;
+    }
+
+    .captcha-subtitle {
+        max-width: 300px;
+        margin: 0 auto 24px;
+        color: #6c6f73;
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .captcha-close {
+        position: absolute;
+        top: 17px;
+        right: 17px;
+        z-index: 10;
+        padding: 7px;
+        opacity: .65;
+    }
+
+    .captcha-close:hover {
+        opacity: 1;
+    }
+
+    .captcha-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 78px;
+        margin: 0 auto 18px;
+    }
+
+    #googleCaptcha {
+        display: inline-block;
+    }
+
+    .captcha-error {
+        margin: 4px 0 16px;
+        color: #dc3545;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .captcha-error i {
+        margin-right: 4px;
+    }
+
+    .captcha-continue-btn {
+        width: 170px;
+        min-height: 43px;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 10px;
+        background: #0d6efd;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all .2s ease;
+    }
+
+    .captcha-continue-btn:hover:not(:disabled) {
+        background: #0b5ed7;
+        transform: translateY(-1px);
+        box-shadow: 0 7px 18px rgba(13, 110, 253, .22);
+    }
+
+    .captcha-continue-btn:disabled {
+        background: #a9c5ef;
+        cursor: not-allowed;
+        opacity: .8;
+    }
+
+    .captcha-continue-btn .spinner-border {
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+
+</style>

@@ -1,0 +1,208 @@
+﻿/* ================================
+   Privacy Policy Page
+   ================================ */
+.privacy-page {
+    min-height: calc(100vh - 80px);
+    padding: 40px 15px;
+    background: #f8f9fa;
+}
+.privacy-card {
+    max-width: 950px;
+    margin: auto;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+/* ================================
+   Header
+   ================================ */
+.privacy-header {
+    padding: 30px 28px;
+    background: linear-gradient(135deg, #e8f8ff, #f5fbff);
+    border-bottom: 1px solid #e5e7eb;
+}
+   .privacy-header h1 {
+        margin: 0 0 8px;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        color: #212529;
+    }
+        .privacy-header h1 i {
+            color: #0d6efd;
+            margin-right: 8px;
+        }
+
+    .privacy-header p {
+        margin: 0;
+        color: #6c757d;
+        font-size: 15px;
+    }
+/* ================================
+   Content
+   ================================ */
+.privacy-content {
+    padding: 35px;
+}
+
+    .privacy-content h4 {
+        margin-top: 30px;
+        margin-bottom: 12px;
+        font-size: 19px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+        .privacy-content h4:first-child {
+            margin-top: 0;
+        }
+
+    .privacy-content p {
+        margin-bottom: 15px;
+        color: #555;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .privacy-content ul {
+        margin-bottom: 20px;
+        padding-left: 22px;
+    }
+
+    .privacy-content li {
+        margin-bottom: 7px;
+        color: #555;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    /* ================================
+   Links
+   ================================ */
+
+    .privacy-content a {
+        color: #0d6efd;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+
+/* ================================
+   Divider
+   ================================ */
+
+.privacy-divider {
+    margin: 0 0 25px;
+    border: 0;
+    border-top: 1px solid #e9ecef;
+}
+
+/* ================================
+   Last Updated Box
+   ================================ */
+
+.privacy-updated {
+    margin-top: 30px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 11px;
+    color: #555;
+    font-size: 14px;
+}
+
+    .privacy-updated strong {
+        color: #343a40;
+    }
+
+/* ================================
+   Buttons / Back Link
+   ================================ */
+
+.privacy-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+    .privacy-buttons .btn {
+        min-height: 45px;
+        border-radius: 10px;
+        padding: 10px 22px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .privacy-buttons .btn:hover {
+            transform: translateY(-1px);
+        }
+
+/* ================================
+   Mobile Responsive
+   ================================ */
+
+@media (max-width: 768px) {
+
+    .privacy-page {
+        padding: 25px 10px;
+    }
+
+    .privacy-header {
+        padding: 25px 20px;
+    }
+
+        .privacy-header h1 {
+            font-size: 27px;
+        }
+
+    .privacy-content {
+        padding: 25px 20px;
+    }
+
+        .privacy-content h4 {
+            font-size: 18px;
+        }
+
+        .privacy-content p,
+        .privacy-content li {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+}
+
+@media (max-width: 576px) {
+
+    .privacy-page {
+        padding: 20px 8px;
+    }
+
+    .privacy-card {
+        border-radius: 16px;
+    }
+
+    .privacy-header {
+        padding: 22px 16px;
+    }
+
+        .privacy-header h1 {
+            font-size: 24px;
+        }
+
+    .privacy-content {
+        padding: 22px 16px;
+    }
+
+    .privacy-buttons {
+        flex-direction: column;
+    }
+
+        .privacy-buttons .btn {
+            width: 100%;
+        }
+}
+

@@ -1,0 +1,164 @@
+﻿@{
+    ViewData["Title"] = "Categories";
+}
+<div class="container-fluid py-5">
+    <!-- Page Heading -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">Shop By Category</h1>
+        <p class="text-muted">
+            Explore our wide range of products
+        </p>
+    </div>
+    <!-- Categories -->
+    <div class="row g-4">
+        <!-- Laptop -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 category-card">
+                <img src="~/Images/HP15Image.jpg"
+                     class="card-img-top category-img"
+                     alt="Laptops">
+
+                <div class="card-body text-center">
+                    <h2 class="fw-bold">Laptops</h2>
+
+                    <p class="text-black fw-semibold fs-6">
+                        Explore powerful laptops for work,
+                        study, gaming and entertainment.
+                    </p>
+
+                    <a asp-controller="Product"
+                       asp-action="Laptop"
+                       asp-route-name="Laptops"
+                       class="btn btn-primary mt-2">
+                        Explore Laptops
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Clothes -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 category-card">
+                <img src="~/Images/fashion.jpg"
+                     class="card-img-top category-img"
+                     alt="Clothes">
+
+                <div class="card-body text-center">
+                    <h2 class="fw-bold">Clothes</h2>
+
+                    <p class="text-black fw-semibold fs-6">
+                        Discover stylish and comfortable
+                        clothes for every occasion.
+                    </p>
+
+                    <a asp-controller="Category"
+                       asp-action="Products"
+                       asp-route-name="Clothes"
+                       class="btn btn-primary mt-2">
+                        Explore Clothes
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Gym -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 category-card">
+
+                <img src="~/Images/gymphoto.webp"
+                     class="card-img-top category-img"
+                     alt="Gym Items">
+
+                <div class="card-body text-center">
+                    <h2 class="fw-bold">Gym Items</h2>
+
+                    <p class="text-black fw-semibold fs-6">
+                        Find quality fitness equipment
+                        for your workout journey.
+                    </p>
+                    <a asp-controller="Category"
+                       asp-action="Products"
+                       asp-route-name="Gym"
+                       class="btn btn-primary mt-2">
+                        Explore Gym Items
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Food -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 category-card">
+                <img src="~/Images/food.jpg"
+                     class="card-img-top category-img"
+                     alt="Food">
+                <div class="card-body text-center">
+                    <h2 class="fw-bold">Food</h2>
+                    <p class="text-black fw-semibold fs-6">
+                        Order delicious food and enjoy
+                        your favorite meals.
+                    </p>
+                    <a asp-controller="Category"
+                       asp-action="Products"
+                       asp-route-name="Food"
+                       class="btn btn-primary mt-2">
+                        Explore Food
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Accessories -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 category-card">
+
+                <img src="~/Images/Watch.jpg"
+                     class="card-img-top category-img"
+                     alt="Electronic Accessories">
+
+                <div class="card-body text-center">
+                    <h2 class="fw-bold">Electronic Accessories</h2>
+
+                    <p class="text-black fw-semibold fs-6">
+                        Find headphones, keyboards, mice,
+                        chargers and more.
+                    </p>
+
+                    <a asp-controller="Category"
+                       asp-action="Products"
+                       asp-route-name="Accessories"
+                       class="btn btn-primary mt-2">
+                        Explore Accessories
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .category-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: 0.3s ease;
+    }
+    .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .category-img {
+        height: 250px;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .category-card h2 {
+        color: #0d6efd;
+    }
+
+    .category-card .btn {
+        border-radius: 25px;
+        padding: 10px 22px;
+    }
+
+</style>
