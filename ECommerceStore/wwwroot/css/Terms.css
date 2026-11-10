@@ -1,0 +1,199 @@
+﻿.terms-page {
+    min-height: calc(100vh - 80px);
+    padding: 40px 15px;
+    background: #f8f9fa;
+}
+
+.terms-card {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.terms-header {
+    padding: 32px 35px;
+    background: linear-gradient(135deg, #e8f8ff, #f5fbff);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+    .terms-header h1 {
+        margin: 0 0 8px;
+        color: #212529;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+    }
+
+        .terms-header h1 i {
+            margin-right: 9px;
+            color: #0d6efd;
+        }
+
+    .terms-header p {
+        margin: 0;
+        color: #6c757d;
+        font-size: 15px;
+    }
+
+.terms-content {
+    padding: 38px;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+    .terms-content > p:first-child {
+        margin-top: 0;
+        font-size: 16px;
+        color: #444;
+    }
+
+    .terms-content hr {
+        margin: 28px 0;
+        border: 0;
+        border-top: 1px solid #e5e7eb;
+    }
+
+.terms-section {
+    margin-bottom: 28px;
+}
+
+    .terms-section:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .terms-section h4 {
+        margin: 0 0 10px;
+        color: #212529;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+        .terms-section h4::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            margin-right: 9px;
+            vertical-align: -2px;
+            background: #0d6efd;
+            border-radius: 4px;
+        }
+
+    .terms-section p {
+        margin: 0 0 12px;
+    }
+
+        .terms-section p:last-child {
+            margin-bottom: 0;
+        }
+
+    .terms-section ul {
+        margin: 10px 0 0;
+        padding-left: 25px;
+    }
+
+    .terms-section li {
+        margin-bottom: 7px;
+    }
+
+        .terms-section li::marker {
+            color: #0d6efd;
+        }
+
+.terms-updated {
+    margin-top: 35px;
+    padding: 15px 18px;
+    background: #f8f9fa;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    color: #555;
+    font-size: 14px;
+}
+
+    .terms-updated strong {
+        color: #212529;
+    }
+
+
+/* =========================
+   Responsive Design
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .terms-page {
+        padding: 25px 12px;
+    }
+
+    .terms-card {
+        border-radius: 18px;
+    }
+
+    .terms-header {
+        padding: 26px 23px;
+    }
+
+        .terms-header h1 {
+            font-size: 27px;
+        }
+
+    .terms-content {
+        padding: 28px 23px;
+        font-size: 14px;
+    }
+
+    .terms-section h4 {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .terms-page {
+        padding: 15px 8px;
+    }
+
+    .terms-card {
+        border-radius: 15px;
+    }
+
+    .terms-header {
+        padding: 22px 18px;
+    }
+
+        .terms-header h1 {
+            font-size: 24px;
+        }
+
+        .terms-header p {
+            font-size: 13px;
+        }
+
+    .terms-content {
+        padding: 22px 18px;
+        line-height: 1.7;
+    }
+
+        .terms-content hr {
+            margin: 22px 0;
+        }
+
+    .terms-section {
+        margin-bottom: 23px;
+    }
+
+        .terms-section h4 {
+            font-size: 16px;
+        }
+
+    .terms-updated {
+        margin-top: 28px;
+        padding: 13px 14px;
+    }
+}

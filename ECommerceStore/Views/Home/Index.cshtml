@@ -1,0 +1,859 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@inject IConfiguration Configuration;
+<!-- =========================
+     HERO SECTION
+========================= -->
+<section class="hero-section">
+
+    <div id="heroCarousel"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         data-bs-interval="5000">
+
+        <!-- =========================
+             CAROUSEL INDICATORS
+        ========================= -->
+        <div class="carousel-indicators custom-indicators">
+
+            <button type="button"
+                    data-bs-target="#heroCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1">
+            </button>
+
+            <button type="button"
+                    data-bs-target="#heroCarousel"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2">
+            </button>
+
+            <button type="button"
+                    data-bs-target="#heroCarousel"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3">
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             CAROUSEL INNER
+        ========================= -->
+        <div class="carousel-inner">
+
+
+            <!-- =========================
+                 SLIDE 1 - TECHNOLOGY
+            ========================= -->
+            <div class="carousel-item active">
+
+                <div class="hero-banner">
+
+                    <div class="container">
+
+                        <div class="row align-items-center g-4">
+
+                            <!-- TEXT -->
+                            <div class="col-lg-6">
+
+                                <div class="hero-content">
+
+                                    <p class="new-arrival">
+                                        New Arrivals
+                                    </p>
+
+                                    <h1>
+                                        Upgrade Your
+                                        <br>
+                                        Tech Experience
+                                    </h1>
+
+                                    <p class="hero-description">
+                                        Premium Laptop &amp; Mobile Accessories.
+                                        <br class="d-none d-md-block">
+                                        Best Quality. Best Prices. Fast Delivery.
+                                    </p>
+
+                                    <a href="/Product/Laptop" class="shop-btn">
+                                        Shop Now
+                                        <i class="fa-solid fa-arrow-right ms-2"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- IMAGE -->
+                            <div class="col-lg-6">
+
+                                <div class="hero-image">
+
+                                    <img src="~/images/LaptopImage.jpeg"
+                                         class="img-fluid"
+                                         alt="Laptop and Mobile Accessories">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SLIDE 2 - FITNESS
+            ========================= -->
+            <div class="carousel-item">
+
+                <div class="hero-banner">
+
+                    <div class="container">
+
+                        <div class="row align-items-center g-4">
+
+                            <!-- TEXT -->
+                            <div class="col-lg-6">
+
+                                <div class="hero-content">
+
+                                    <p class="new-arrival">
+                                        Fitness Collection
+                                    </p>
+
+                                    <h1>
+                                        Build Your
+                                        <br>
+                                        Best Body
+                                    </h1>
+
+                                    <p class="hero-description">
+                                        Premium Gym &amp; Fitness Essentials.
+                                        <br class="d-none d-md-block">
+                                        Stay Strong. Stay Healthy.
+                                    </p>
+
+                                    <a href="#" class="shop-btn">
+                                        Shop Now
+                                        <i class="fa-solid fa-arrow-right ms-2"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- IMAGE -->
+                            <div class="col-lg-6">
+
+                                <div class="hero-image">
+
+                                    <img src="~/images/GymImage.jpeg"
+                                         class="img-fluid"
+                                         alt="Gym and Fitness Products">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SLIDE 3 - FOOD
+            ========================= -->
+            <div class="carousel-item">
+
+                <div class="hero-banner">
+
+                    <div class="container">
+
+                        <div class="row align-items-center g-4">
+
+                            <!-- TEXT -->
+                            <div class="col-lg-6">
+
+                                <div class="hero-content">
+
+                                    <p class="new-arrival">
+                                        Fresh &amp; Delicious
+                                    </p>
+
+                                    <h1>
+                                        Food You
+                                        <br>
+                                        Will Love
+                                    </h1>
+
+                                    <p class="hero-description">
+                                        Delicious Food &amp; Beverages.
+                                        <br class="d-none d-md-block">
+                                        Great Taste At Great Prices.
+                                    </p>
+
+                                    <a href="#" class="shop-btn">
+                                        Shop Now
+                                        <i class="fa-solid fa-arrow-right ms-2"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- IMAGE -->
+                            <div class="col-lg-6">
+
+                                <div class="hero-image">
+
+                                    <img src="~/images/FoodImage.jpeg"
+                                         class="img-fluid"
+                                         alt="Food and Beverages">
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =========================
+             PREVIOUS BUTTON
+        ========================= -->
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide="prev">
+
+            <span class="slider-arrow">
+                <i class="fa-solid fa-chevron-left"></i>
+            </span>
+
+            <span class="visually-hidden">
+                Previous
+            </span>
+
+        </button>
+
+
+        <!-- =========================
+             NEXT BUTTON
+        ========================= -->
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide="next">
+
+            <span class="slider-arrow">
+                <i class="fa-solid fa-chevron-right"></i>
+            </span>
+
+            <span class="visually-hidden">
+                Next
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- Services Section -->
+<section>
+    <div class="Services">
+
+        <div class="card">
+            <h3><i class="ri-truck-line"></i> Free Shipping</h3>
+            <p>On orders over ₹499</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="ri-safe-fill"></i> Secure Payment</h3>
+            <p>100% secure payment</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-arrow-rotate-left"></i> Easy Returns</h3>
+            <p>7 days return policy</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="bi bi-tags"></i> Best Prices</h3>
+            <p>Guaranteed</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="ri-customer-service-fill"></i> 24/7 Support</h3>
+            <p>We are here to help</p>
+        </div>
+
+    </div>
+</section>
+<!-- ================= TOP DEALS ================= -->
+<section class="top-deals-section">
+
+    <div class="top-deals-container">
+
+        <!-- Section Header -->
+        <div class="deals-header">
+
+            <div>
+                <span class="deals-subtitle">LIMITED TIME OFFERS</span>
+
+                <h2>
+                    Top Deals
+                    <span>⚡</span>
+                </h2>
+
+                <p>Grab the best products at unbeatable prices.</p>
+            </div>
+
+            <a href="Products.aspx?deal=true" class="view-deals">
+                View All Deals
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <!-- Product Cards -->
+        <div class="deals-grid">
+            <!-- CARD 1 -->
+            <div class="deal-card">
+
+                <div class="deal-image">
+
+                    <span class="deal-badge">35% OFF</span>
+
+                    <button type="button" class="deal-wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img src="~/Images/HP15Image.jpg"
+                         alt="Premium Laptop"
+                         class="product-img">
+                </div>
+                <div class="deal-details">
+
+                    <span class="deal-category">
+                        Electronics
+                    </span>
+
+                    <h3>
+                        Premium Pro Laptop 15.6"
+                    </h3>
+                    <!-- Rating -->
+                    <div class="deal-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="review-count">
+                            (124)
+                        </span>
+
+                    </div>
+
+
+                    <!-- Price -->
+                    <div class="deal-price">
+
+                        <span class="current-price">
+                            ₹42,999
+                        </span>
+
+                        <span class="old-price">
+                            ₹65,999
+                        </span>
+
+                    </div>
+
+
+                    <!-- Stock -->
+                    <div class="deal-stock">
+
+                        <span>
+                            <i class="fa-solid fa-fire"></i>
+                            Only 5 left!
+                        </span>
+
+                    </div>
+
+
+                    <!-- Add Cart -->
+                    <asp:Button ID="btnLaptopCart"
+                                runat="server"
+                                Text="Add to Cart"
+                                CssClass="deal-cart-btn"
+                                OnClick="btnLaptopCart_Click" />
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+            <div class="deal-card">
+
+                <div class="deal-image">
+
+                    <span class="deal-badge">28% OFF</span>
+
+                    <button type="button" class="deal-wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img src="~/Images/one plus.jpg"
+                         alt="Smartphone"
+                         class="product-img">
+
+                </div>
+
+
+                <div class="deal-details">
+
+                    <span class="deal-category">
+                        Mobiles
+                    </span>
+
+                    <h3>
+                        One plus 15 SmartPhone
+                    </h3>
+
+
+                    <div class="deal-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="review-count">
+                            (86)
+                        </span>
+
+                    </div>
+
+
+                    <div class="deal-price">
+
+                        <span class="current-price">
+                            ₹24,999
+                        </span>
+
+                        <span class="old-price">
+                            ₹34,999
+                        </span>
+
+                    </div>
+
+
+                    <div class="deal-stock">
+
+                        <span>
+                            <i class="fa-solid fa-fire"></i>
+                            Only 8 left!
+                        </span>
+
+                    </div>
+
+
+                    <asp:Button ID="btnPhoneCart"
+                                runat="server"
+                                Text="Add to Cart"
+                                CssClass="deal-cart-btn"
+                                OnClick="btnPhoneCart_Click" />
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+            <div class="deal-card">
+
+                <div class="deal-image">
+
+                    <span class="deal-badge">40% OFF</span>
+
+                    <button type="button" class="deal-wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img src="~/Images/headphone.jpg"
+                         alt="Wireless Headphones"
+                         class="product-img">
+
+                </div>
+
+
+                <div class="deal-details">
+
+                    <span class="deal-category">
+                        Audio
+                    </span>
+
+                    <h3>
+                        Wireless Noise Cancelling Headphones
+                    </h3>
+
+
+                    <div class="deal-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="review-count">
+                            (219)
+                        </span>
+
+                    </div>
+
+
+                    <div class="deal-price">
+
+                        <span class="current-price">
+                            ₹2,999
+                        </span>
+
+                        <span class="old-price">
+                            ₹4,999
+                        </span>
+
+                    </div>
+
+
+                    <div class="deal-stock">
+
+                        <span>
+                            <i class="fa-solid fa-fire"></i>
+                            Only 12 left!
+                        </span>
+
+                    </div>
+
+
+                    <asp:Button ID="btnHeadphoneCart"
+                                runat="server"
+                                Text="Add to Cart"
+                                CssClass="deal-cart-btn"
+                                OnClick="btnHeadphoneCart_Click" />
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="deal-card">
+
+                <div class="deal-image">
+
+                    <span class="deal-badge">30% OFF</span>
+
+                    <button type="button" class="deal-wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img src="~/Images/Watch.jpg"
+                         alt="Smart Fitness Watch"
+                         class="product-img">
+
+                </div>
+
+
+                <div class="deal-details">
+
+                    <span class="deal-category">
+                        Accessories
+                    </span>
+
+                    <h3>
+                        Smart Fitness Watch Pro
+                    </h3>
+
+
+                    <div class="deal-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="review-count">
+                            (67)
+                        </span>
+
+                    </div>
+
+
+                    <div class="deal-price">
+
+                        <span class="current-price">
+                            ₹1,999
+                        </span>
+
+                        <span class="old-price">
+                            ₹2,999
+                        </span>
+
+                    </div>
+
+
+                    <div class="deal-stock">
+
+                        <span>
+                            <i class="fa-solid fa-fire"></i>
+                            Only 7 left!
+                        </span>
+
+                    </div>
+
+
+                    <asp:Button ID="btnWatchCart"
+                                runat="server"
+                                Text="Add to Cart"
+                                CssClass="deal-cart-btn"
+                                OnClick="btnWatchCart_Click" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     SHOP BY CATEGORY
+===================================================== -->
+
+<section class="shop-category-section">
+
+    <div class="shop-category-container">
+
+        <div class="category-header">
+
+            <div>
+                <span class="category-subtitle">
+                    EXPLORE OUR COLLECTION
+                </span>
+
+                <h2>Shop by Category</h2>
+
+                <p>
+                    Find what you need, all in one place.
+                </p>
+            </div>
+
+            <a href="Categories.aspx" class="category-view-all">
+                View All
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <!-- Laptops -->
+            <a asp-controller="Product" asp-action="Laptop"
+               class="category-item">
+
+                <div class="category-image">
+                    <img src="~/Images/HP15Image.jpg"
+                         alt="Laptops">
+                </div>
+                <h3>Laptops</h3>
+                <span>30+ Products</span>
+
+            </a>
+
+
+            <!-- Gym -->
+            <a href="Products.aspx?category=gym"
+               class="category-item">
+
+                <div class="category-image">
+                    <img src="~/Images/gymset.jpg"
+                         alt="Gym">
+                </div>
+
+                <h3>Gym</h3>
+
+                <span>80+ Products</span>
+
+            </a>
+
+
+            <!-- Accessories -->
+            <a href="Products.aspx?category=accessories"
+               class="category-item">
+
+                <div class="category-image">
+                    <img src="~/Images/headphone.jpg"
+                         alt="Accessories">
+                </div>
+
+                <h3>Accessories</h3>
+
+                <span>150+ Products</span>
+
+            </a>
+
+
+            <!-- Electronics -->
+            <a href="Products.aspx?category=electronics"
+               class="category-item">
+
+                <div class="category-image">
+                    <img src="~/Images/AIR.jpg"
+                         alt="Electronics">
+                </div>
+
+                <h3>Electronics</h3>
+
+                <span>200+ Products</span>
+
+            </a>
+
+
+            <!-- Food -->
+            <a href="Products.aspx?category=food"
+               class="category-item">
+
+                <div class="category-image">
+                    <img src="~/Images/food.jpg"
+                         alt="Food">
+                </div>
+
+                <h3>Food</h3>
+
+                <span>100+ Products</span>
+
+            </a>
+
+
+            <!-- Clothes -->
+            <a href="Products.aspx?category=clothes"
+               class="category-item">
+
+                <div class="category-image">
+                    <img src="~/Images/fashion.jpg"
+                         alt="Clothes">
+                </div>
+
+                <h3>Clothes</h3>
+
+                <span>250+ Products</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     TRUST & PAYMENT SECTION
+===================================================== -->
+
+<section class="trust-info-section">
+
+    <div class="trust-info-container">
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+
+            <div class="trust-badge">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <h4>Secure Payment</h4>
+                    <p>SSL Encrypted Checkout</p>
+                </div>
+            </div>
+
+            <div class="trust-badge">
+                <i class="fa-solid fa-rotate-left"></i>
+                <div>
+                    <h4>Easy Returns</h4>
+                    <p>7-Day Money Back Guarantee</p>
+                </div>
+            </div>
+
+            <div class="trust-badge">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <h4>Fast Delivery</h4>
+                    <p>Nationwide Shipping</p>
+                </div>
+            </div>
+
+            <div class="trust-badge">
+                <i class="fa-solid fa-headset"></i>
+                <div>
+                    <h4>24/7 Support</h4>
+                    <p>Dedicated Customer Care</p>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="trust-info-divider">
+
+        <!-- Payment Methods + App Download -->
+        <div class="trust-bottom-row">
+
+            <div class="payment-methods">
+                <span class="trust-bottom-label">We Accept</span>
+                <div class="payment-icons">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                    <i class="fa-solid fa-indian-rupee-sign upi-icon"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                </div>
+            </div>
+
+            <div class="app-download">
+                <span class="trust-bottom-label">Get the App</span>
+                <div class="app-badges">
+                    <a href="#" class="app-badge">
+                        <i class="fa-brands fa-google-play"></i>
+                        <div>
+                            <small>GET IT ON</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="app-badge">
+                        <i class="fa-brands fa-apple"></i>
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

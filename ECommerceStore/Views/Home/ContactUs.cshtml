@@ -1,0 +1,469 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="contact-page">
+
+    <!-- Background -->
+    <div class="contact-orb contact-orb-1"></div>
+    <div class="contact-orb contact-orb-2"></div>
+    <div class="contact-orb contact-orb-3"></div>
+
+    <!-- HERO-->
+    <section class="contact-hero">
+        <div class="contact-container">
+
+            <div class="contact-badge">
+                <span></span>
+                We're here to help
+            </div>
+
+            <h1>
+                Let's start a
+                <strong>conversation.</strong>
+            </h1>
+
+            <p>
+                Have a question about a product, order, delivery,
+                payment or anything else? Our team is ready to help
+                you with your Ankit Kart experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!--CONTACT INFORMATION CARDS-->
+    <section class="contact-info-section">
+        <div class="contact-container">
+            <div class="contact-info-grid">
+                <!-- EMAIL -->
+                <div class="contact-info-card">
+
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <span class="contact-label">
+                            EMAIL US
+                        </span>
+
+                        <h3>
+                            support@ankitkart.com
+                        </h3>
+
+                        <p>
+                            Send us your questions and we'll
+                            get back to you as soon as possible.
+                        </p>
+                        <a href="mailto:ankitk66135@gmail.com">
+                            Send Email →
+                    
+                    </div>
+                </div>
+                <!-- PHONE -->
+                <div class="contact-info-card">
+
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <span class="contact-label">
+                            CALL US
+                        </span>
+
+                        <h3>
+                            +91 9520452038
+                        </h3>
+
+                        <p>
+                            Need quick assistance?
+                            Talk directly with our support team.
+                        </p>
+
+                        <a href="tel:+919520452038">
+                            Call Now →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOCATION -->
+                <div class="contact-info-card">
+
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+
+                        <span class="contact-label">
+                            OUR LOCATION
+                        </span>
+
+                        <h3>
+                            Ghaziabad, India
+                        </h3>
+
+                        <p>
+                            Ankit Kart is proudly built to serve
+                            customers across India.
+                        </p>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=28.794974,77.525562"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Location →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT FORM
+    ========================== -->
+    <section class="contact-form-section">
+
+        <div class="contact-container">
+
+            <div class="contact-form-wrapper">
+
+                <!-- LEFT SIDE -->
+                <div class="contact-form-intro">
+
+                    <span>
+                        SEND US A MESSAGE
+                    </span>
+
+                    <h2>
+                        How can we
+                        <strong>help?</strong>
+                    </h2>
+
+                    <p>
+                        Fill out the form and tell us what
+                        you need. Whether it's a product question,
+                        order issue or general feedback,
+                        we're listening.
+                    </p>
+
+                    <div class="contact-points">
+
+                        <div>
+                            <span>✓</span>
+                            Quick response
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Friendly support
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Customer-first approach
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE FORM -->
+                <div class="contact-form-card">
+
+                    <form asp-controller="Home"
+                          asp-action="Contact"
+                          method="post">
+
+                        <!-- NAME + EMAIL -->
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Full Name
+                                </label>
+
+                                <input type="text"
+                                       id="name"
+                                       name="Name"
+                                       placeholder="Enter your name"
+                                       required />
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <input type="email"
+                                       id="email"
+                                       name="Email"
+                                       placeholder="you@example.com"
+                                       required />
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SUBJECT -->
+                        <div class="form-group">
+
+                            <label for="subject">
+                                Subject
+                            </label>
+
+                            <input type="text"
+                                   id="subject"
+                                   name="Subject"
+                                   placeholder="What can we help you with?"
+                                   required />
+
+                        </div>
+
+
+                        <!-- CATEGORY -->
+                        <div class="form-group">
+
+                            <label for="category">
+                                Category
+                            </label>
+
+                            <select id="category"
+                                    name="Category">
+
+                                <option value="">
+                                    Select a category
+                                </option>
+
+                                <option value="order">
+                                    Order & Delivery
+                                </option>
+
+                                <option value="product">
+                                    Product Question
+                                </option>
+
+                                <option value="payment">
+                                    Payment
+                                </option>
+
+                                <option value="return">
+                                    Return & Refund
+                                </option>
+
+                                <option value="technical">
+                                    Technical Support
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+                        <div class="form-group">
+
+                            <label for="message">
+                                Your Message
+                            </label>
+
+                            <textarea id="message"
+                                      name="Message"
+                                      rows="6"
+                                      placeholder="Write your message here..."
+                                      required></textarea>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+                        <button type="submit"
+                                class="contact-submit">
+
+                            Send Message
+
+                            <span>→</span>
+
+                        </button>
+
+
+                        <p class="form-note">
+                            We respect your privacy and will
+                            only use your information to respond
+                            to your request.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ
+    ========================== -->
+    <section class="contact-faq">
+
+        <div class="contact-container">
+
+            <div class="contact-section-heading">
+
+                <span>
+                    COMMON QUESTIONS
+                </span>
+
+                <h2>
+                    Before you
+                    <strong>contact us.</strong>
+                </h2>
+
+            </div>
+
+
+            <div class="faq-grid">
+
+                <!-- FAQ 1 -->
+                <details class="faq-card">
+
+                    <summary>
+                        How can I track my order?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        Once your order has been shipped, you can
+                        track it using the tracking information
+                        provided with your order.
+                    </p>
+
+                </details>
+
+
+                <!-- FAQ 2 -->
+                <details class="faq-card">
+
+                    <summary>
+                        How do I return a product?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        You can contact our support team with your
+                        order details and we'll guide you through
+                        the return process.
+                    </p>
+
+                </details>
+
+
+                <!-- FAQ 3 -->
+                <details class="faq-card">
+
+                    <summary>
+                        What payment methods are supported?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        Available payment options depend on your
+                        checkout configuration. You can see the
+                        available methods during checkout.
+                    </p>
+
+                </details>
+
+
+                <!-- FAQ 4 -->
+                <details class="faq-card">
+
+                    <summary>
+                        How can I become a seller?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        If Ankit Kart supports seller registration,
+                        contact our team and we'll provide information
+                        about the seller onboarding process.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+    <section class="contact-final">
+
+        <div class="contact-container">
+
+            <div class="contact-final-card">
+
+                <span>
+                    ANKIT KART SUPPORT
+                </span>
+
+                <h2>
+                    We're always
+                    <strong>happy to help.</strong>
+                </h2>
+
+                <p>
+                    Your experience matters to us.
+                    Reach out whenever you need assistance.
+                </p>
+
+                <a href="mailto:ankitk66135@gmail.com"
+                   class="contact-primary-btn">
+
+                    Contact Support
+
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+@section Scripts {
+
+    <script src="~/js/contact.js"></script>
+}

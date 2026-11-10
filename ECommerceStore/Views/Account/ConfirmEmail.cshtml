@@ -1,0 +1,346 @@
+﻿@{
+    ViewData["Title"] = "Email Confirmation";
+}
+
+<style>
+    .email-confirm-page {
+        min-height: 82vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 20px;
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(circle at 15% 20%, rgba(255, 102, 0, 0.16), transparent 30%), radial-gradient(circle at 85% 80%, rgba(255, 153, 77, 0.13), transparent 30%), linear-gradient(135deg, #f8fafc, #eef2f7);
+    }
+
+    /* Decorative circles */
+    .glass-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(2px);
+        pointer-events: none;
+    }
+
+    .circle-one {
+        width: 220px;
+        height: 220px;
+        top: 8%;
+        left: 8%;
+        background: rgba(255, 102, 0, 0.12);
+    }
+
+    .circle-two {
+        width: 280px;
+        height: 280px;
+        right: 5%;
+        bottom: 5%;
+        background: rgba(255, 133, 51, 0.10);
+    }
+
+    /* Glass Card */
+    .email-confirm-card {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 560px;
+        padding: 48px 42px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        border-radius: 28px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        overflow: hidden;
+    }
+
+        /* Orange top line */
+        .email-confirm-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6600, #ff8533);
+        }
+
+    /* Success Icon */
+    .confirmation-icon {
+        width: 95px;
+        height: 95px;
+        margin: 0 auto 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 102, 0, 0.10);
+        border: 1px solid rgba(255, 102, 0, 0.18);
+        box-shadow: 0 12px 30px rgba(255, 102, 0, 0.15), inset 0 1px 5px rgba(255, 255, 255, 0.8);
+    }
+
+        .confirmation-icon i {
+            font-size: 42px;
+            color: #ff6600;
+        }
+
+    /* Heading */
+    .confirmation-title {
+        margin-bottom: 12px;
+        color: #172033;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .confirmation-text {
+        margin-bottom: 8px;
+        color: #687386;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .brand-name {
+        color: #ff6600;
+        font-weight: 700;
+    }
+
+    /* Success Information */
+    .success-box {
+        margin: 28px 0;
+        padding: 18px 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        text-align: left;
+        background: rgba(255, 255, 255, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        border-radius: 16px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .success-box-icon {
+        min-width: 36px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 102, 0, 0.10);
+        color: #ff6600;
+    }
+
+    .success-box-content strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #202938;
+        font-size: 14px;
+    }
+
+    .success-box-content span {
+        color: #7b8494;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* Login Button */
+    .login-btn {
+        width: 100%;
+        padding: 14px 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #ff6600, #ff7a1a);
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(255, 102, 0, 0.22);
+        transition: all 0.25s ease;
+    }
+
+        .login-btn:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(255, 102, 0, 0.30);
+        }
+
+    /* Bottom Text */
+    .bottom-text {
+        margin-top: 18px;
+        color: #9299a6;
+        font-size: 12px;
+    }
+
+    /* Error State */
+    .error-box {
+        margin: 25px 0;
+        padding: 18px;
+        text-align: left;
+        background: rgba(220, 53, 69, 0.07);
+        border: 1px solid rgba(220, 53, 69, 0.15);
+        border-radius: 15px;
+        color: #842029;
+        font-size: 14px;
+    }
+
+        .error-box ul {
+            margin: 8px 0 0;
+            padding-left: 20px;
+        }
+
+    /* Mobile */
+    @@media (max-width: 576px) {
+
+        .email-confirm-page {
+            min-height: 78vh;
+            padding: 30px 15px;
+        }
+
+        .email-confirm-card {
+            padding: 40px 22px;
+            border-radius: 22px;
+        }
+
+        .confirmation-title {
+            font-size: 25px;
+        }
+
+        .confirmation-icon {
+            width: 82px;
+            height: 82px;
+        }
+
+            .confirmation-icon i {
+                font-size: 35px;
+            }
+
+        .circle-one {
+            width: 150px;
+            height: 150px;
+        }
+
+        .circle-two {
+            width: 180px;
+            height: 180px;
+        }
+    }
+</style>
+
+
+<div class="email-confirm-page">
+
+    <!-- Background Decorations -->
+    <div class="glass-circle circle-one"></div>
+    <div class="glass-circle circle-two"></div>
+
+
+    <div class="email-confirm-card">
+
+        @if (ViewData.ModelState.IsValid)
+        {
+            <!-- Success Icon -->
+            <div class="confirmation-icon">
+                <i class="fa-solid fa-envelope-circle-check"></i>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="confirmation-title">
+                Email Confirmed!
+            </h1>
+
+            <p class="confirmation-text">
+                Your email address has been successfully verified.
+            </p>
+
+            <p class="confirmation-text">
+                Welcome to <span class="brand-name">AnkitKart</span>.
+                Your account is now ready to use.
+            </p>
+
+            <!-- Information Box -->
+            <div class="success-box">
+
+                <div class="success-box-icon">
+                    <i class="fa-solid fa-shield-check"></i>
+                </div>
+
+                <div class="success-box-content">
+                    <strong>Your account is verified</strong>
+
+                    <span>
+                        Email verification helps keep your AnkitKart
+                        account secure and protects your account.
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Login Button -->
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="login-btn">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Continue to Login
+
+            </a>
+
+            <div class="bottom-text">
+                <i class="fa-solid fa-lock me-1"></i>
+                Secure shopping starts with a verified account.
+            </div>
+        }
+        else
+        {
+            <!-- Error Icon -->
+            <div class="confirmation-icon">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+
+            <h1 class="confirmation-title">
+                Confirmation Failed
+            </h1>
+
+            <p class="confirmation-text">
+                We couldn't confirm your email address.
+            </p>
+
+            <!-- Error Messages -->
+            <div class="error-box">
+
+                <strong>
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                    Something went wrong
+                </strong>
+
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values
+                        .SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+
+            </div>
+
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="login-btn">
+
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+                Go to Login
+
+            </a>
+        }
+
+    </div>
+
+</div>

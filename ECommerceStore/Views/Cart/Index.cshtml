@@ -1,0 +1,331 @@
+﻿@model List<ECommerceStore.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+
+    decimal grandTotal = Model.Sum(x => x.TotalPrice);
+    int totalItems = Model.Sum(x => x.Quantity);
+}
+
+<div class="cart-page">
+
+    <!-- =========================
+         PAGE HEADER
+         ========================= -->
+
+    <div class="cart-header">
+
+        <div>
+            <h1>
+                Shopping Cart
+            </h1>
+
+            <p>
+                Review your items before checkout
+            </p>
+        </div>
+
+        <div class="cart-count">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span>
+                @totalItems @(totalItems == 1 ? "Item" : "Items")
+            </span>
+
+        </div>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <!-- =========================
+             EMPTY CART
+             ========================= -->
+
+        <div class="empty-cart">
+
+            <div class="empty-cart-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+            </div>
+
+            <h2>
+                Your cart is empty
+            </h2>
+
+            <p>
+                Looks like you haven't added anything to your cart yet.
+            </p>
+
+            <a asp-controller="Product"
+               asp-action="Laptop"
+               class="continue-shopping-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Continue Shopping
+
+            </a>
+
+        </div>
+    }
+    else
+    {
+        <!-- =========================
+             CART CONTENT
+             ========================= -->
+
+        <div class="cart-layout">
+
+
+            <!-- =========================
+                 LEFT SIDE - PRODUCTS
+                 ========================= -->
+
+            <div class="cart-products">
+
+
+                <div class="section-heading">
+
+                    <h3>
+                        Your Items
+                    </h3>
+
+                    <span>
+                        @Model.Count @(Model.Count == 1 ? "Product" : "Products")
+                    </span>
+
+                </div>
+
+
+                @foreach (var item in Model)
+                {
+                    <div class="cart-item-card">
+
+
+                        <!-- PRODUCT IMAGE -->
+
+                        <div class="cart-item-image">
+
+                            <img src="@item.ImageUrl"
+                                 alt="@item.ProductName">
+
+                        </div>
+
+
+                        <!-- PRODUCT INFORMATION -->
+
+                        <div class="cart-item-info">
+
+                            <h3>
+                                @item.ProductName
+                            </h3>
+
+                            <p class="unit-price">
+                                ₹@item.Price.ToString("N0")
+                                <span>per item</span>
+                            </p>
+
+
+                            <!-- QUANTITY -->
+
+                            <div class="quantity-area">
+
+                                <span class="quantity-label">
+                                    Quantity
+                                </span>
+
+                                <div class="quantity-control">
+
+                                    <a asp-controller="Cart"
+                                       asp-action="Decrease"
+                                       asp-route-id="@item.ProductId"
+                                       class="quantity-btn">
+
+                                        <i class="fa-solid fa-minus"></i>
+
+                                    </a>
+
+
+                                    <span class="quantity-number">
+                                        @item.Quantity
+                                    </span>
+
+
+                                    <a asp-controller="Cart"
+                                       asp-action="Increase"
+                                       asp-route-id="@item.ProductId"
+                                       class="quantity-btn">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PRODUCT TOTAL -->
+
+                        <div class="cart-item-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong>
+                                ₹@item.TotalPrice.ToString("N0")
+                            </strong>
+
+
+                            <!-- REMOVE -->
+
+                            <a asp-controller="Cart"
+                               asp-action="Remove"
+                               asp-route-id="@item.ProductId"
+                               class="remove-btn">
+
+                                <i class="fa-regular fa-trash-can"></i>
+
+                                Remove
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                }
+
+
+                <!-- CONTINUE SHOPPING -->
+
+                <a asp-controller="Product"
+                   asp-action="Laptop"
+                   class="back-shopping">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Continue Shopping
+
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 RIGHT SIDE - SUMMARY
+                 ========================= -->
+
+            <div class="cart-summary">
+
+                <div class="summary-card">
+
+                    <h2>
+                        Order Summary
+                    </h2>
+
+
+                    <!-- ITEMS -->
+
+                    <div class="summary-row">
+
+                        <span>
+                            Items
+                        </span>
+
+                        <strong>
+                            @totalItems
+                        </strong>
+
+                    </div>
+
+
+                    <!-- SUBTOTAL -->
+
+                    <div class="summary-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong>
+                            ₹@grandTotal.ToString("N0")
+                        </strong>
+
+                    </div>
+
+
+                    <!-- DELIVERY -->
+
+                    <div class="summary-row">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <strong class="free">
+                            FREE
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-divider"></div>
+
+
+                    <!-- GRAND TOTAL -->
+
+                    <div class="grand-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong>
+                            ₹@grandTotal.ToString("N0")
+                        </strong>
+
+                    </div>
+
+
+                    <!-- CHECKOUT -->
+
+                    <a asp-controller="Checkout"
+                       asp-action="Index"
+                       class="checkout-btn">
+
+                        Proceed to Checkout
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <!-- SECURE PAYMENT -->
+
+                    <div class="secure-payment">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <span>
+                            Secure checkout
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
+
+

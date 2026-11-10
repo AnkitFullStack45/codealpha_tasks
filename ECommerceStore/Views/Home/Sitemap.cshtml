@@ -1,0 +1,239 @@
+﻿@{
+    ViewData["Title"] = "Sitemap";
+}
+<div class="sitemap-page">
+
+    <div class="sitemap-card">
+
+        <!-- Header -->
+        <div class="sitemap-header">
+            <h1>
+                <i class="bi bi-diagram-3"></i>
+                Sitemap
+            </h1>
+
+            <p>
+                Explore all important sections of AnkitKart.
+            </p>
+        </div>
+
+        <!-- Content -->
+        <div class="sitemap-content">
+
+            <div class="sitemap-grid">
+
+                <!-- Main Pages -->
+                <div class="sitemap-section">
+                    <h5>
+                        <i class="bi bi-house-door"></i>
+                        Main Pages
+                    </h5>
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Privacy">
+                                Privacy Policy
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Terms">
+                                Terms & Conditions
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Sitemap">
+                                Sitemap
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Products -->
+                <div class="sitemap-section">
+                    <h5>
+                        <i class="bi bi-grid"></i>
+                        Products
+                    </h5>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="Product" asp-action="Index">
+                                All Products
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Product" asp-action="Laptop">
+                                Laptops
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Mobile Phones
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Accessories
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Gym Items
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Food & Beverages
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Clothes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Account -->
+                <div class="sitemap-section">
+                    <h5>
+                        <i class="bi bi-person"></i>
+                        Account
+                    </h5>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="Account" asp-action="Login">
+                                Login
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Account" asp-action="Register">
+                                Create Account
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Account" asp-action="ForgotPassword">
+                                Forgot Password
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Account" asp-action="Logout">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Shopping -->
+                <div class="sitemap-section">
+                    <h5>
+                        <i class="bi bi-cart3"></i>
+                        Shopping
+                    </h5>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="Cart" asp-action="Index">
+                                Shopping Cart
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Cart" asp-action="Index">
+                                Checkout
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Order" asp-action="Index">
+                                My Orders
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Order History
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Customer Support -->
+                <div class="sitemap-section">
+                    <h5>
+                        <i class="bi bi-headset"></i>
+                        Customer Support
+                    </h5>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="ContactsUs">
+                                Contact Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Help Center
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Legal -->
+                <div class="sitemap-section">
+                    <h5>
+                        <i class="bi bi-shield-check"></i>
+                        Legal
+                    </h5>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="Privacy">
+                                Privacy Policy
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Terms">
+                                Terms & Conditions
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Sitemap">
+                                Sitemap
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

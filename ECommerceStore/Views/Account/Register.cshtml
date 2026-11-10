@@ -1,0 +1,213 @@
+﻿@model ECommerceStore.ViewModels.RegisterViewModel
+@inject IConfiguration Configuration 
+@{
+    ViewData["Title"] = "Create Account";
+}
+<div class="register-page">
+
+    <div class="register-container">
+
+        <!-- REGISTER CARD -->
+
+        <div class="register-card">
+
+            <!-- HEADER -->
+
+            <div class="register-header">
+
+                <div class="register-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <h1>Create Account</h1>
+
+                <p>
+                    Create your ANKIT CART account
+                </p>
+
+            </div>
+
+
+            <!-- ERROR MESSAGE -->
+            @if (ViewBag.Error != null)
+            {
+                <div class="register-error">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    @ViewBag.Error
+                </div>
+            }
+
+            <div asp-validation-summary="All"
+                 class="register-validation">
+            </div>
+
+
+            <!-- FORM -->
+
+            <form asp-controller="Account"
+                  asp-action="Register"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <!-- FULL NAME -->
+
+                <div class="register-field">
+
+                    <label asp-for="FullName">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <input asp-for="FullName"
+                               placeholder="Enter your full name"
+                               autocomplete="name" />
+
+                    </div>
+
+                    <span asp-validation-for="FullName"
+                          class="field-error">
+                    </span>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="register-field">
+
+                    <label asp-for="Email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input asp-for="Email"
+                               placeholder="Enter your email"
+                               autocomplete="email" />
+
+                    </div>
+
+                    <span asp-validation-for="Email"
+                          class="field-error">
+                    </span>
+
+                </div>
+                <!--phone number-->
+                <div class="register-field">
+
+                    <label asp-for="PhoneNumber">
+                        Phone Number
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-square-phone"></i>
+
+                        <input asp-for="PhoneNumber"
+                               placeholder="Enter your Phone Number" maxlength="10"/>
+
+                    </div>
+
+                    <span asp-validation-for="PhoneNumber"
+                          class="field-error">
+                    </span>
+
+                </div>
+
+                <!-- PASSWORD -->
+
+                <div class="register-field">
+
+                    <label asp-for="Password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input asp-for="Password"
+                               placeholder="Create a password"
+                               autocomplete="new-password" />
+
+                    </div>
+
+                    <span asp-validation-for="Password"
+                          class="field-error">
+                    </span>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="register-field">
+
+                    <label asp-for="ConfirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input asp-for="ConfirmPassword"
+                               placeholder="Confirm your password"
+                               autocomplete="new-password" />
+
+                    </div>
+
+                    <span asp-validation-for="ConfirmPassword"
+                          class="field-error">
+                    </span>
+
+                </div>
+
+                <!--CAPTCHA-->
+                <div class="g-recaptcha" data-sitekey="@Configuration["Recaptcha:SiteKey"]"></div>
+                <br />
+                <!-- BUTTON -->
+
+                <button type="submit"
+                        class="register-button">
+
+                    <span>
+                        Create Account
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- LOGIN -->
+
+            <div class="login-link">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <a asp-controller="Account"
+                   asp-action="Login">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

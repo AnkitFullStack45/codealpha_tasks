@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ECommerceStore.Models.Product>
+@{
+    ViewData["Title"] = "Laptops";
+}
+<div class="container-fluid py-4">
+    <a asp-controller="Product"
+       asp-action="Create"
+       class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i>
+        Add Product
+    </a>
+    <!-- Page Heading -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">
+            Laptops
+        </h1>
+        <p class="card-text fw-bold">
+            Choose from our collection of laptops
+        </p>
+    </div>
+    <!-- Product Grid -->
+    <div class="row g-4">
+        @foreach (var product in Model)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+                <!-- Product Card -->
+                <div class="card product-card h-100 shadow-sm">
+
+
+                    <!-- Product Image -->
+                    <div class="product-image-container">
+
+                        <img src="~/Images/@product.ImageUrl"
+                             class="product-image"
+                             alt="@product.Name">
+
+                    </div>
+                    <!-- Product Details -->
+                    <div class="card-body product-card-body">
+
+                        <!-- Product Name -->
+                        <h5 class="product-title">
+                            @product.Name
+                        </h5>
+
+
+                        <!-- Product Description -->
+                        <p class="product-description">
+                            @product.Description
+                        </p>
+
+
+                        <!-- Product Price -->
+                        <div class="product-price">
+
+                            ₹@product.Price.ToString("N0")
+
+                        </div>
+
+
+                        <!-- Buttons -->
+                        <div class="product-actions">
+
+
+                            <!-- Details -->
+                            <a asp-controller="Product"
+                               asp-action="Details"
+                               asp-route-id="@product.Id"
+                               class="btn details-btn">
+
+                                Details
+
+                            </a>
+
+
+                            <!-- Add To Cart -->
+                            <a asp-controller="Cart"
+                               asp-action="AddToCart"
+                               asp-route-id="@product.Id"
+                               class="btn cart-bt add-to-cart-btn"
+                               data-id="@product.Id"
+                               data-name="@product.Name"
+                               data-price="@product.Price"
+                               data-image="@product.ImageUrl">
+
+                                <i class="fa-solid fa-cart-shopping"></i>
+
+                                <span>
+                                    Add to Cart
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
