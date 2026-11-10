@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Check Your Email";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Check Your Email • Circlely</title>
+
+    <link rel="stylesheet"
+          href="~/css/Register.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+
+    <main class="register-container">
+
+        <section class="register-card">
+
+            <div class="logo">
+                Circlely
+            </div>
+
+            <p class="subtitle">
+                Check your email
+            </p>
+
+            <div class="email-message">
+
+                <p>
+                    Your Circlely account has been created successfully.
+                </p>
+
+                <p>
+                    We have sent a confirmation link to:
+                </p>
+
+                <strong>
+                    @ViewBag.Email
+                </strong>
+
+                <p>
+                    Please open your email and click
+                    <strong>Confirm Email</strong>
+                    to activate your account.
+                </p>
+
+                <p>
+                    You must confirm your email before
+                    you can sign in.
+                </p>
+
+            </div>
+
+            <div class="login-text">
+
+                Already confirmed?
+
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="login-link">
+                    Sign in
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

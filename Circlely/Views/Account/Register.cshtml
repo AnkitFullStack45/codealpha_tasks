@@ -1,0 +1,148 @@
+﻿@model Circlely.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Register • Circlely</title>
+
+    <link rel="stylesheet"
+          href="~/css/Register.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+
+    <main class="register-container">
+
+        <section class="register-card">
+
+            <div class="logo">
+                Circlely
+            </div>
+
+            <p class="subtitle">
+                Create your account and join Circlely
+            </p>
+
+
+            <div asp-validation-summary="ModelOnly"
+                 class="validation-summary">
+            </div>
+
+
+            <form asp-controller="Account"
+                  asp-action="Register"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label asp-for="Email"
+                           class="form-label">
+                        Email
+                    </label>
+
+                    <input asp-for="Email"
+                           class="form-control"
+                           placeholder="Enter your email"
+                           autocomplete="email" />
+
+                    <span asp-validation-for="Email"
+                          class="field-validation-error">
+                    </span>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label asp-for="Password"
+                           class="form-label">
+                        Password
+                    </label>
+
+                    <input asp-for="Password"
+                           class="form-control"
+                           placeholder="Create a password"
+                           autocomplete="new-password" />
+
+                    <span asp-validation-for="Password"
+                          class="field-validation-error">
+                    </span>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label asp-for="ConfirmPassword"
+                           class="form-label">
+                        Confirm Password
+                    </label>
+
+                    <input asp-for="ConfirmPassword"
+                           class="form-control"
+                           placeholder="Confirm your password"
+                           autocomplete="new-password" />
+
+                    <span asp-validation-for="ConfirmPassword"
+                          class="field-validation-error">
+                    </span>
+
+                </div>
+
+
+                <!-- Register Button -->
+
+                <button type="submit"
+                        class="register-button">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <!-- Login Link -->
+
+            <div class="login-text">
+
+                Already have an account?
+
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="login-link">
+
+                    Sign in
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <partial name="_ValidationScriptsPartial" />
+
+</body>
+
+</html>

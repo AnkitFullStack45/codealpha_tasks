@@ -1,0 +1,359 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background: radial-gradient( circle at 15% 20%, rgba(124, 92, 255, 0.25), transparent 35% ), radial-gradient( circle at 85% 80%, rgba(0, 210, 255, 0.18), transparent 35% ), #09090f;
+    overflow: hidden;
+}
+
+
+    /* =========================
+   BACKGROUND GLOW
+   ========================= */
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 350px;
+        height: 350px;
+        top: -120px;
+        left: -120px;
+        background: rgba(124, 92, 255, 0.25);
+        border-radius: 50%;
+        filter: blur(100px);
+        pointer-events: none;
+    }
+
+
+    body::after {
+        content: "";
+        position: fixed;
+        width: 350px;
+        height: 350px;
+        right: -120px;
+        bottom: -120px;
+        background: rgba(0, 200, 255, 0.18);
+        border-radius: 50%;
+        filter: blur(100px);
+        pointer-events: none;
+    }
+
+
+/* =========================
+   REGISTER CONTAINER
+   ========================= */
+
+.register-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================
+   GLASS CARD
+   ========================= */
+
+.register-card {
+    padding: 42px 36px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================
+   LOGO
+   ========================= */
+
+.logo {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+    background: linear-gradient( 135deg, #ffffff, #a99cff, #65d9ff );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   VALIDATION SUMMARY
+   ========================= */
+
+.validation-summary {
+    color: #ff8f9d;
+    background: rgba(255, 70, 90, 0.08);
+    border: 1px solid rgba(255, 70, 90, 0.18);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+
+    .validation-summary:empty {
+        display: none;
+    }
+
+
+    .validation-summary ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+
+/* =========================
+   FORM
+   ========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+
+.form-control {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    outline: none;
+    background: rgba(255, 255, 255, 0.055);
+    color: #ffffff;
+    font-size: 14px;
+    transition: 0.25s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+    }
+
+
+    .form-control:focus {
+        border-color: rgba(150, 130, 255, 0.8);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12), 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+
+/* =========================
+   VALIDATION
+   ========================= */
+
+.field-validation-error {
+    display: block;
+    margin-top: 6px;
+    color: #ff8f9d;
+    font-size: 12px;
+}
+
+
+/* =========================
+   REGISTER BUTTON
+   ========================= */
+
+.register-button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    background: linear-gradient( 135deg, #745cff, #4e8cff );
+    box-shadow: 0 10px 30px rgba(94, 91, 255, 0.28);
+    transition: 0.25s ease;
+}
+
+
+    .register-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 35px rgba(94, 91, 255, 0.4);
+    }
+
+
+    .register-button:active {
+        transform: translateY(0);
+    }
+
+
+/* =========================
+   LOGIN LINK
+   ========================= */
+
+.login-text {
+    text-align: center;
+    margin-top: 25px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+
+.login-link {
+    color: #a99cff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: 0.2s ease;
+}
+
+
+    .login-link:hover {
+        color: #c1b8ff;
+    }
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 480px) {
+
+    body {
+        align-items: flex-start;
+        padding-top: 40px;
+        overflow-y: auto;
+    }
+
+
+    .register-container {
+        padding: 15px;
+    }
+
+
+    .register-card {
+        padding: 34px 24px;
+        border-radius: 20px;
+    }
+
+
+    .logo {
+        font-size: 30px;
+    }
+}
+.email-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+    .email-message p {
+        margin-bottom: 14px;
+    }
+
+    .email-message strong {
+        display: block;
+        color: #ffffff;
+        font-size: 14px;
+        margin-bottom: 20px;
+        word-break: break-word;
+    }
+
+.login-text {
+    text-align: center;
+    margin-top: 25px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.login-link {
+    color: #a78bfa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+    .login-link:hover {
+        text-decoration: underline;
+    }
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 25px;
+}
+.email-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+    .email-message p {
+        margin-bottom: 14px;
+    }
+
+    .email-message strong {
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+    .forgot-password a {
+        color: #a78bfa;
+        text-decoration: none;
+        font-size: 13px;
+    }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }

@@ -1,0 +1,574 @@
+﻿/* =========================================================
+   CIRCLELY LOGIN - GLASSMORPHISM
+   ========================================================= */
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #262626;
+    /* Glassmorphism background */
+    background: radial-gradient( circle at 15% 20%, rgba(255, 105, 180, 0.45), transparent 32% ), radial-gradient( circle at 85% 15%, rgba(99, 102, 241, 0.45), transparent 32% ), radial-gradient( circle at 75% 85%, rgba(34, 211, 238, 0.35), transparent 35% ), linear-gradient( 135deg, #f8fafc 0%, #eef2ff 50%, #fdf2f8 100% );
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+    /* ---------- BACKGROUND BLUR CIRCLES ---------- */
+
+    .login-page::before,
+    .login-page::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(10px);
+        pointer-events: none;
+    }
+
+    .login-page::before {
+        width: 320px;
+        height: 320px;
+        top: -120px;
+        left: -100px;
+        background: rgba(236, 72, 153, 0.25);
+    }
+
+    .login-page::after {
+        width: 350px;
+        height: 350px;
+        right: -120px;
+        bottom: -120px;
+        background: rgba(59, 130, 246, 0.25);
+    }
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.login-container {
+    width: 100%;
+    max-width: 390px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   LOGIN CARD
+   ========================================================= */
+
+.login-card {
+    width: 100%;
+    padding: 38px 38px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 25px 60px rgba(31, 38, 135, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.circlely-logo {
+    text-align: center;
+    font-family: "Segoe Script", "Brush Script MT", cursive;
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.login-subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.login-form {
+    width: 100%;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
+
+.input-group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.login-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.55);
+    color: #111827;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+    .login-input::placeholder {
+        color: #8b8f98;
+    }
+
+    .login-input:focus {
+        border-color: rgba(99, 102, 241, 0.7);
+        background: rgba(255, 255, 255, 0.75);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+.password-input {
+    padding-right: 65px;
+}
+
+
+/* ---------- SHOW / HIDE BUTTON ---------- */
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #4f46e5;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px;
+}
+
+    .show-password:hover {
+        color: #3730a3;
+    }
+
+
+/* =========================================================
+   VALIDATION
+   ========================================================= */
+
+.field-error {
+    display: block;
+    margin-top: 5px;
+    padding-left: 3px;
+    color: #dc2626;
+    font-size: 12px;
+}
+
+
+/* ---------- SUMMARY ---------- */
+
+.validation-summary {
+    color: #dc2626;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+    .validation-summary ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+
+/* =========================================================
+   REMEMBER ME
+   ========================================================= */
+
+.remember-row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 18px;
+}
+
+.remember-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4b5563;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .remember-label input {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        accent-color: #6366f1;
+    }
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-button {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient( 135deg, #6366f1, #8b5cf6, #ec4899 );
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+    .login-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 30px rgba(99, 102, 241, 0.32);
+    }
+
+    .login-button:active {
+        transform: translateY(0);
+    }
+
+    .login-button:focus-visible {
+        outline: 3px solid rgba(99, 102, 241, 0.25);
+        outline-offset: 2px;
+    }
+
+
+/* =========================================================
+   OR DIVIDER
+   ========================================================= */
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 27px 0 22px;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(107, 114, 128, 0.25);
+}
+
+.or-divider span {
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FACEBOOK BUTTON
+   ========================================================= */
+
+.facebook-login {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.45);
+    color: #1877f2;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+    .facebook-login i {
+        font-size: 17px;
+    }
+
+    .facebook-login:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: translateY(-1px);
+    }
+
+
+/* =========================================================
+   FORGOT PASSWORD
+   ========================================================= */
+
+.forgot-password {
+    display: block;
+    width: fit-content;
+    margin: 22px auto 0;
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+
+/* =========================================================
+   SIGN UP CARD
+   ========================================================= */
+
+.signup-card {
+    width: 100%;
+    margin-top: 14px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 15px 40px rgba(31, 38, 135, 0.08);
+    color: #4b5563;
+    font-size: 13px;
+}
+
+    .signup-card a {
+        color: #4f46e5;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .signup-card a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   GET APP
+   ========================================================= */
+
+.get-app {
+    text-align: center;
+    margin-top: 24px;
+}
+
+    .get-app p {
+        color: #6b7280;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+
+/* =========================================================
+   APP BUTTONS
+   ========================================================= */
+
+.app-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.app-button {
+    min-width: 135px;
+    height: 43px;
+    padding: 0 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.38);
+    color: #111827;
+    text-decoration: none;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+    .app-button:hover {
+        background: rgba(255, 255, 255, 0.65);
+        transform: translateY(-1px);
+    }
+
+    .app-button > i {
+        font-size: 19px;
+    }
+
+    .app-button span {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1.1;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .app-button small {
+        font-size: 7px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        color: #6b7280;
+        margin-bottom: 2px;
+    }
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .login-page {
+        padding: 25px 15px;
+    }
+
+    .login-card {
+        padding: 32px 25px 28px;
+        border-radius: 20px;
+    }
+
+    .circlely-logo {
+        font-size: 42px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .login-page {
+        padding: 20px 12px;
+    }
+
+    .login-card {
+        padding: 28px 20px 25px;
+        border-radius: 18px;
+    }
+
+    .circlely-logo {
+        font-size: 38px;
+    }
+
+    .login-subtitle {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .signup-card {
+        padding: 16px;
+    }
+
+    .app-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .app-button {
+        width: 180px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 320px) {
+
+    .login-page {
+        padding: 12px 8px;
+    }
+
+    .login-card {
+        padding: 25px 16px 22px;
+    }
+
+    .circlely-logo {
+        font-size: 34px;
+    }
+
+    .login-input {
+        height: 45px;
+    }
+
+    .login-button {
+        height: 44px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}

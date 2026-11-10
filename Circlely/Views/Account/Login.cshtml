@@ -1,0 +1,227 @@
+﻿@model Circlely.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Login • Circlely</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/login.css"
+          asp-append-version="true" />
+</head>
+<body>
+
+    <main class="login-page">
+
+        <section class="login-container">
+
+            <!-- LOGIN CARD -->
+            <div class="login-card">
+
+                <!-- LOGO -->
+                <div class="circlely-logo">
+                    Circlely
+                </div>
+
+                <p class="login-subtitle">
+                    Log in to connect with your circle
+                </p>
+
+                <!-- LOGIN FORM -->
+                <form asp-controller="Account"
+                      asp-action="Login"
+                      method="post"
+                      class="login-form">
+
+                    @Html.AntiForgeryToken()
+
+                    <!-- Validation -->
+                    <div asp-validation-summary="ModelOnly"
+                         class="validation-summary">
+                    </div>
+
+                    <!-- EMAIL / USERNAME -->
+                    <div class="input-group">
+
+                        <input asp-for="Email"
+                               class="login-input"
+                               placeholder="Email"
+                               autocomplete="on" />
+
+                        <span asp-validation-for="Email"
+                              class="field-error">
+                        </span>
+
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="input-group password-group">
+
+                        <input asp-for="Password"
+                               class="login-input password-input"
+                               placeholder="Password"
+                               autocomplete="current-password" />
+
+                        <button type="button"
+                                class="show-password"
+                                id="showPassword">
+                            Show
+                        </button>
+
+                        <span asp-validation-for="Password"
+                              class="field-error">
+                        </span>
+
+                    </div>
+
+                    <!-- REMEMBER ME -->
+                    <div class="remember-row">
+
+                        <label class="remember-label">
+
+                            <input asp-for="RememberMe"
+                                   type="checkbox" />
+
+                            <span>Remember me</span>
+
+                        </label>
+
+                    </div>
+
+                    <!-- LOGIN BUTTON -->
+                    <button type="submit"
+                            class="login-button">
+                        Log in
+                    </button>
+
+                </form>
+
+                <!-- OR DIVIDER -->
+                <div class="or-divider">
+
+                    <div class="divider-line"></div>
+
+                    <span>OR</span>
+
+                    <div class="divider-line"></div>
+
+                </div>
+
+                <!-- FACEBOOK STYLE LOGIN -->
+                <button type="button"
+                        class="facebook-login">
+
+                    <i class="bi bi-facebook"></i>
+
+                    <span>Log in with Facebook</span>
+
+                </button>
+
+                <!-- FORGOT PASSWORD -->
+                <a asp-controller="Account"
+                   asp-action="ForgotPassword"
+                   class="forgot-password">
+                    Forgot password?
+                </a>
+
+            </div>
+
+
+            <!-- SIGN UP CARD -->
+            <div class="signup-card">
+
+                <span>Don't have an account?</span>
+
+                <a asp-controller="Account"
+                   asp-action="Register">
+                    Sign up
+                </a>
+
+            </div>
+
+
+            <!-- GET APP -->
+            <div class="get-app">
+
+                <p>Get the app.</p>
+
+                <div class="app-buttons">
+
+                    <a href="#" class="app-button">
+
+                        <i class="bi bi-google-play"></i>
+
+                        <span>
+                            <small>GET IT ON</small>
+                            Google Play
+                        </span>
+
+                    </a>
+
+                    <a href="#" class="app-button">
+
+                        <i class="bi bi-apple"></i>
+
+                        <span>
+                            <small>Download on the</small>
+                            App Store
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+            const passwordInput =
+                document.getElementById("Password");
+
+            const showPassword =
+                document.getElementById("showPassword");
+
+            if (passwordInput && showPassword) {
+
+                showPassword.addEventListener("click", function () {
+
+                    if (passwordInput.type === "password") {
+
+                        passwordInput.type = "text";
+                        showPassword.textContent = "Hide";
+
+                    } else {
+
+                        passwordInput.type = "password";
+                        showPassword.textContent = "Show";
+
+                    }
+
+                });
+
+            }
+
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+
+</body>
+</html>

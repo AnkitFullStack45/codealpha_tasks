@@ -1,0 +1,321 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="admin-dashboard">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <div class="admin-header">
+
+        <div>
+            <span class="admin-label">
+                CIRCLELY ADMIN
+            </span>
+
+            <h1>Dashboard</h1>
+
+            <p>
+                Manage your Circlely platform from one place.
+            </p>
+        </div>
+
+        <div class="admin-profile">
+            <div class="admin-avatar">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div>
+                <strong>Administrator</strong>
+                <span>Admin Account</span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================== -->
+
+    <div class="admin-stats">
+
+        <!-- Users -->
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon purple">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <span>Total Users</span>
+
+                <strong>0</strong>
+
+                <small>
+                    Registered accounts
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Posts -->
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon blue">
+                <i class="fa-solid fa-photo-film"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <span>Total Posts</span>
+
+                <strong>0</strong>
+
+                <small>
+                    Posts shared
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Reports -->
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon orange">
+                <i class="fa-solid fa-flag"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <span>Reports</span>
+
+                <strong>0</strong>
+
+                <small>
+                    Pending reports
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Active Users -->
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon green">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <span>Active Users</span>
+
+                <strong>0</strong>
+
+                <small>
+                    Currently active
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ADMIN MANAGEMENT
+    ========================== -->
+
+    <div class="admin-section">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Management</h2>
+
+                <p>
+                    Manage Circlely users and content.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="management-grid">
+
+
+            <!-- Users -->
+
+            <a href="#"
+               class="management-card">
+
+                <div class="management-icon purple">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div class="management-content">
+
+                    <h3>Manage Users</h3>
+
+                    <p>
+                        View, search and manage
+                        Circlely users.
+                    </p>
+
+                    <span>
+                        Open Users
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Posts -->
+
+            <a href="#"
+               class="management-card">
+
+                <div class="management-icon blue">
+                    <i class="fa-solid fa-photo-film"></i>
+                </div>
+
+                <div class="management-content">
+
+                    <h3>Manage Posts</h3>
+
+                    <p>
+                        Review and manage posts
+                        shared on Circlely.
+                    </p>
+
+                    <span>
+                        Open Posts
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Reports -->
+
+            <a href="#"
+               class="management-card">
+
+                <div class="management-icon orange">
+                    <i class="fa-solid fa-flag"></i>
+                </div>
+
+                <div class="management-content">
+
+                    <h3>Reports</h3>
+
+                    <p>
+                        Review reports submitted
+                        by Circlely users.
+                    </p>
+
+                    <span>
+                        View Reports
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Settings -->
+
+            <a href="#"
+               class="management-card">
+
+                <div class="management-icon green">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+
+                <div class="management-content">
+
+                    <h3>Admin Settings</h3>
+
+                    <p>
+                        Configure platform and
+                        administrator settings.
+                    </p>
+
+                    <span>
+                        Open Settings
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RECENT ACTIVITY
+    ========================== -->
+
+    <div class="admin-section">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Recent Activity</h2>
+
+                <p>
+                    Latest activity on Circlely.
+                </p>
+            </div>
+
+            <a href="#">
+                View All
+            </a>
+
+        </div>
+
+
+        <div class="activity-card">
+
+            <div class="empty-activity">
+
+                <div class="activity-icon">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+
+                <h3>No Recent Activity</h3>
+
+                <p>
+                    Recent platform activity will
+                    appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

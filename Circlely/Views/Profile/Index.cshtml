@@ -1,0 +1,153 @@
+﻿@model Circlely.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="profile-page">
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+
+        <!-- Profile Image -->
+        <div class="profile-image-container">
+
+            @if (!string.IsNullOrEmpty(Model.ProfileImage))
+            {
+                <img src="@Model.ProfileImage"
+                     alt="Profile Image"
+                     class="profile-image" />
+            }
+            else
+            {
+                <div class="default-profile-image">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            }
+
+        </div>
+
+
+        <!-- Profile Information -->
+        <div class="profile-info">
+
+            <div class="profile-top">
+
+                <h2>@Model.Email</h2>
+
+                <a asp-controller="Profile"
+                   asp-action="Edit"
+                   class="edit-profile-btn">
+                    Edit Profile
+                </a>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="profile-stats">
+
+                <div class="stat">
+                    <strong>@Model.PostCount</strong>
+                    <span>Posts</span>
+                </div>
+
+                <div class="stat">
+                    <strong>@Model.FollowerCount</strong>
+                    <span>Followers</span>
+                </div>
+
+                <div class="stat">
+                    <strong>@Model.FollowingCount</strong>
+                    <span>Following</span>
+                </div>
+
+            </div>
+
+
+            <!-- Bio -->
+            <div class="profile-bio">
+
+                @if (!string.IsNullOrEmpty(Model.Bio))
+                {
+                    <p>@Model.Bio</p>
+                }
+                else
+                {
+                    <p class="no-bio">
+                        No bio added yet.
+                    </p>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Divider -->
+    <div class="profile-divider"></div>
+
+
+    <!-- Posts Section -->
+    <div class="profile-posts">
+
+        <div class="posts-title">
+            <i class="fa-solid fa-table-cells"></i>
+            <span>Posts</span>
+        </div>
+
+
+        @if (Model.Posts != null && Model.Posts.Any())
+        {
+            <!-- Posts Grid -->
+            <div class="posts-grid">
+
+                @foreach (var post in Model.Posts)
+                {
+                    <div class="post-item">
+
+                        @if (!string.IsNullOrEmpty(post.ImageUrl))
+                        {
+                            <img src="@post.ImageUrl"
+                                 alt="Post"
+                                 class="post-image" />
+                        }
+                        else
+                        {
+                            <div class="text-post">
+
+                                <p>
+                                    @post.caption
+                                </p>
+
+                            </div>
+                        }
+
+                    </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <!-- Empty Posts -->
+            <div class="empty-posts">
+
+                <div class="empty-post-icon">
+                    <i class="fa-regular fa-image"></i>
+                </div>
+
+                <h3>No Posts Yet</h3>
+
+                <p>
+                    When you share photos, they will appear here.
+                </p>
+
+            </div>
+        }
+
+    </div>
+
+</div>
