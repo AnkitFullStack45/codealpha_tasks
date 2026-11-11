@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Circlely</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <style>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                min-height: 100%;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background: #fafafa;
+            }
+
+            .auth-page {
+                min-height: 100vh;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 20px;
+            }
+
+            .auth-container {
+                width: 100%;
+                max-width: 380px;
+            }
+
+            .auth-footer {
+                text-align: center;
+
+                margin-top: 20px;
+
+                color: #737373;
+
+                font-size: 13px;
+            }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            @RenderBody()
+
+            <div class="auth-footer">
+
+                © @DateTime.Now.Year Circlely
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

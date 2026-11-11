@@ -1,0 +1,241 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="account-dashboard">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Account Dashboard</h1>
+            <p>Manage your Circlely account and activity.</p>
+        </div>
+
+        <a asp-controller="Profile"
+           asp-action="Index"
+           class="view-profile-btn">
+            <i class="fa-regular fa-user"></i>
+            View Profile
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         ACCOUNT OVERVIEW
+    ========================== -->
+    <div class="dashboard-grid">
+
+        <!-- Profile Card -->
+        <div class="dashboard-card profile-card">
+
+            <div class="card-icon purple">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+            <div class="card-content">
+                <h3>Profile</h3>
+                <p>
+                    Manage your profile information,
+                    profile photo and bio.
+                </p>
+
+                <a asp-controller="Profile"
+                   asp-action="Edit"
+                   class="card-link">
+                    Edit Profile
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- Posts Card -->
+        <div class="dashboard-card">
+
+            <div class="card-icon blue">
+                <i class="fa-regular fa-images"></i>
+            </div>
+
+            <div class="card-content">
+                <h3>Your Posts</h3>
+                <p>
+                    View and manage the posts you have
+                    shared on Circlely.
+                </p>
+
+                <a asp-controller="Profile"
+                   asp-action="Index"
+                   class="card-link">
+                    View Posts
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- Followers Card -->
+        <div class="dashboard-card">
+
+            <div class="card-icon pink">
+                <i class="fa-solid fa-user-group"></i>
+            </div>
+
+            <div class="card-content">
+                <h3>Followers</h3>
+                <p>
+                    See the people who follow your
+                    Circlely account.
+                </p>
+
+                <a href="#" class="card-link">
+                    View Followers
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- Following Card -->
+        <div class="dashboard-card">
+
+            <div class="card-icon cyan">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <div class="card-content">
+                <h3>Following</h3>
+                <p>
+                    Discover and manage the people
+                    you follow.
+                </p>
+
+                <a href="#" class="card-link">
+                    View Following
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- Messages Card -->
+        <div class="dashboard-card">
+
+            <div class="card-icon orange">
+                <i class="fa-regular fa-comment"></i>
+            </div>
+
+            <div class="card-content">
+                <h3>Messages</h3>
+                <p>
+                    Continue your conversations with
+                    people in your circle.
+                </p>
+
+                <a href="#" class="card-link">
+                    Open Messages
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- Settings Card -->
+        <div class="dashboard-card">
+
+            <div class="card-icon green">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+
+            <div class="card-content">
+                <h3>Settings</h3>
+                <p>
+                    Manage your account and privacy
+                    settings.
+                </p>
+
+                <a href="#" class="card-link">
+                    Account Settings
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================== -->
+    <div class="quick-section">
+
+        <div class="section-heading">
+            <h2>Quick Actions</h2>
+            <p>Frequently used account actions.</p>
+        </div>
+
+        <div class="quick-actions">
+
+            <a asp-controller="Home"
+               asp-action="CreatePost"
+               class="quick-action">
+                <span class="quick-icon">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <span>
+                    <strong>Create Post</strong>
+                    <small>Share something with your circle</small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+
+            <a asp-controller="Profile"
+               asp-action="Edit"
+               class="quick-action">
+
+                <span class="quick-icon">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </span>
+
+                <span>
+                    <strong>Edit Profile</strong>
+                    <small>Update your profile information</small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+
+            <a asp-controller="Profile"
+               asp-action="Index"
+               class="quick-action">
+
+                <span class="quick-icon">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+
+                <span>
+                    <strong>My Profile</strong>
+                    <small>View your public profile</small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

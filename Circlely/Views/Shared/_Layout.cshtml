@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Circlely</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- =====================================================
+         LEFT SIDEBAR
+    ====================================================== -->
+    <aside class="circle-sidebar">
+  <div class="circle-brand">
+
+    <!-- App icon visible when collapsed -->
+    <div class="circle-brand-icon">
+        <img src="~/images/Circlely.png" alt="Circlely" class="circlely-app-icon" />
+    </div>
+
+    <!-- Text visible on hover -->
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="circle-brand-text">
+        Circlely
+    </a>
+
+</div>
+        <!-- =========================================
+             MAIN NAVIGATION
+        ========================================== -->
+        <nav class="circle-navigation">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="circle-menu-item active">
+                <i class="fa-solid fa-house"></i>
+                <span class="circle-menu-text">
+                    Home
+                </span>
+            </a>
+            <!-- REELS -->
+            <a href="#"
+               class="circle-menu-item">
+
+                <i class="fa-solid fa-circle-play"></i>
+
+                <span class="circle-menu-text">
+                    Reels
+                </span>
+
+            </a>
+
+
+            <!-- MESSAGES -->
+
+            <a href="#"
+               class="circle-menu-item">
+
+               <i class="fa-solid fa-paper-plane"></i>
+
+                <span class="circle-menu-text">
+                    Messages
+                </span>
+
+                <span class="notification-badge">
+                    2
+                </span>
+
+            </a>
+
+
+            <!-- SEARCH -->
+
+            <a href="#"
+               class="circle-menu-item">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <span class="circle-menu-text">
+                    Search
+                </span>
+
+            </a>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <a href="#"
+               class="circle-menu-item">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span class="circle-menu-text">
+                    Notifications
+                </span>
+
+                <span class="notification-badge">
+                    1
+                </span>
+
+            </a>
+
+
+            <!-- CREATE -->
+
+            <a href="#"
+               class="circle-menu-item">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span class="circle-menu-text">
+                    Create
+                </span>
+
+            </a>
+
+
+            <!-- DASHBOARD -->
+
+            <a href="/Account/Dashboard"
+               class="circle-menu-item">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span class="circle-menu-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- PROFILE -->
+
+           <a asp-controller="Profile"
+   asp-action="Index"
+   class="circle-menu-item">
+
+    <div class="circle-profile-icon">
+        <i class="fa-solid fa-user"></i>
+    </div>
+
+    <span class="circle-menu-text">
+        Profile
+    </span>
+
+</a>
+
+        </nav>
+
+
+        <!-- =================================================
+             BOTTOM NAVIGATION
+        ================================================== -->
+
+        <div class="circle-bottom-navigation">
+
+
+            <!-- MORE -->
+
+            <a href="#"
+               class="circle-menu-item">
+
+                <i class="fa-solid fa-bars"></i>
+
+                <span class="circle-menu-text">
+                    More
+                </span>
+
+            </a>
+
+
+            <!-- ALSO FROM CIRCLELY -->
+
+            <a href="#"
+               class="circle-menu-item">
+
+                <i class="fa-solid fa-table-cells"></i>
+
+                <span class="circle-menu-text">
+                    Also from Circlely
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="circle-main">
+
+
+        <!-- =========================================
+             MOBILE HEADER
+        ========================================== -->
+
+        <header class="circle-mobile-header">
+
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="circle-mobile-logo">
+
+                Circlely
+
+            </a>
+
+
+            <button type="button"
+                    class="circle-mobile-menu">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </header>
+
+
+        <!-- =========================================
+             PAGE CONTENT
+             
+             IMPORTANT:
+             No margin/padding here.
+        ========================================== -->
+
+        <div class="circle-content">
+
+            @RenderBody()
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

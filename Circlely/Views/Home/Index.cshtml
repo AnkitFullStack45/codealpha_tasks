@@ -1,0 +1,348 @@
+﻿@model IEnumerable<Circlely.ViewModels.PostViewModel>
+
+@{
+    ViewData["Title"] = "Home";
+
+    var stories = ViewBag.Stories as IEnumerable<Circlely.Models.Story>;
+
+    var currentUsername = User.Identity?.Name ?? "Your Username";
+    var displayUsername = currentUsername.Contains("@")
+        ? currentUsername.Split('@')[0]
+        : currentUsername;
+
+    // Instagram style time: 5s, 10m, 3h, 2d, 4w
+    string TimeAgo(DateTime createdAtUtc)
+    {
+        var span = DateTime.UtcNow - createdAtUtc;
+        if (span.TotalSeconds < 60) return "now";
+        if (span.TotalMinutes < 60) return $"{(int)span.TotalMinutes}m";
+        if (span.TotalHours < 24) return $"{(int)span.TotalHours}h";
+        if (span.TotalDays < 7) return $"{(int)span.TotalDays}d";
+        return $"{(int)(span.TotalDays / 7)}w";
+    }
+}
+
+<div class="circle-home-wrapper">
+
+    <!-- ================= CENTER FEED ================= -->
+    <main class="circle-feed-page">
+
+        <!-- STORIES (plain row, no card) -->
+        <section class="circle-stories">
+            <div class="circle-stories-list">
+
+                <!-- Your story -->
+                <a asp-controller="Stories" asp-action="Create" class="circle-story circle-create-story">
+                    <div class="circle-story-avatar">
+                        <div class="circle-story-avatar-inner">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <span class="circle-story-name">Your story</span>
+                </a>
+
+                @if (stories != null && stories.Any())
+                {
+                    foreach (var story in stories)
+                    {
+                        <a asp-controller="Stories" asp-action="ViewStory" asp-route-id="@story.Id" class="circle-story">
+                            <div class="circle-story-avatar">
+                                <div class="circle-story-avatar-inner">
+                                    @if (story.User != null && !string.IsNullOrWhiteSpace(story.User.ProfileImage))
+                                    {
+                                        <img src="@story.User.ProfileImage" alt="@story.User.UserName" />
+                                    }
+                                    else
+                                    {
+                                        <div class="circle-story-default-avatar"><i class="fa-solid fa-user"></i></div>
+                                    }
+                                </div>
+                            </div>
+                            <span class="circle-story-name">@(story.User?.UserName ?? "User")</span>
+                        </a>
+                    }
+                }
+
+            </div>
+        </section>
+
+        <!-- POSTS -->
+        @if (Model != null && Model.Any())
+        {
+            foreach (var post in Model)
+            {
+                <article class="circle-post" id="post-@post.Id">
+
+                    <header class="circle-post-header">
+                        <div class="circle-post-user">
+
+                            <div class="circle-post-avatar">
+                                @if (!string.IsNullOrWhiteSpace(post.ProfileImage))
+                                {
+                                    <img src="@post.ProfileImage" alt="@post.UserName" />
+                                }
+                                else
+                                {
+                                    <div class="circle-post-avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+                                }
+                            </div>
+
+                            <div class="circle-post-user-info">
+                                <span class="circle-post-username">@post.UserName</span>
+                                <span class="circle-post-dot">•</span>
+                                <span class="circle-post-time">@TimeAgo(post.CreatedAt)</span>
+                            </div>
+
+                        </div>
+
+                        <button type="button" class="circle-post-more" aria-label="More options">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </header>
+
+                    @if (!string.IsNullOrWhiteSpace(post.ImageUrl))
+                    {
+                        <div class="circle-post-image">
+                            <img src="@post.ImageUrl" alt="Post image" />
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(post.Content))
+                    {
+                        <!-- Text only post -->
+                        <div class="circle-post-content">@post.Content</div>
+                    }
+
+                    <div class="circle-post-actions">
+
+                        <button type="button"
+                                class="circle-post-action circle-like-button like-button @(post.IsLikedByCurrentUser ? "liked" : "")"
+                                data-post-id="@post.Id" aria-label="Like post">
+                            <i class="@(post.IsLikedByCurrentUser ? "fa-solid fa-heart" : "fa-regular fa-heart")"></i>
+                        </button>
+
+                        <button type="button" class="circle-post-action comment-button"
+                                data-post-id="@post.Id" aria-label="Comment">
+                            <i class="fa-regular fa-comment"></i>
+                        </button>
+
+                        <button type="button" class="circle-post-action share-button"
+                                data-post-id="@post.Id" aria-label="Share">
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="circle-post-details">
+
+                        <div class="circle-like-count">
+                            <span class="like-count">@post.LikeCount</span>
+                            @(post.LikeCount == 1 ? "like" : "likes")
+                        </div>
+
+                        @if (!string.IsNullOrWhiteSpace(post.ImageUrl) && !string.IsNullOrWhiteSpace(post.Content))
+                        {
+                            <div class="circle-caption">
+                                <span class="circle-caption-username">@post.UserName</span>@post.Content
+                            </div>
+                        }
+
+                        <!-- ================= COMMENTS ================= -->
+
+                        <div class="circle-comments-section">
+
+                            <!-- View comments button -->
+                            @if (post.CommentCount > 0)
+                            {
+                                <button type="button"
+                                        class="circle-view-comments"
+                                        data-post-id="@post.Id">
+
+                                    View all @post.CommentCount
+                                    @(post.CommentCount == 1 ? "comment" : "comments")
+
+                                </button>
+                            }
+
+                            <!-- Existing comments -->
+
+                            <div class="circle-comments-list">
+
+                                @foreach (var comment in post.Comments)
+                                {
+                                    <div class="circle-comment-item">
+
+                                        <strong class="circle-comment-username">
+                                            @comment.UserName
+                                        </strong>
+
+                                        <span class="circle-comment-content">
+                                            @comment.Content
+                                        </span>
+
+                                    </div>
+                                }
+
+                            </div>
+
+                            <!-- Add comment form -->
+                            <form class="circle-comment-box"
+                                  data-url="@Url.Action("AddComment", "Home")">
+
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden" name="postId" value="@post.Id" />
+
+                                <input type="text"
+                                       name="content"
+                                       class="circle-comment-input"
+                                       placeholder="Add a comment..."
+                                       maxlength="500"
+                                       required />
+
+                                <button type="submit" class="circle-comment-submit">
+                                    Post
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </article>
+            }
+        }
+        else
+        {
+            <section class="circle-empty-feed">
+                <div class="circle-empty-feed-icon"><i class="fa-regular fa-images"></i></div>
+                <h3>No posts yet</h3>
+                <p>Be the first person to share something on Circlely.</p>
+                <a asp-controller="Home" asp-action="CreatePost" class="circle-create-post-button">Create Post</a>
+            </section>
+        }
+
+    </main>
+
+
+    <!-- ================= RIGHT SIDEBAR =================
+         DELETE this whole <aside> if your _Layout already renders a right sidebar. -->
+    <aside class="circle-rightbar">
+
+        <div class="circle-rightbar-profile">
+            <div class="circle-user-avatar">
+                <div class="circle-user-avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <div class="circle-rightbar-profile-info">
+                <div class="circle-rightbar-username">@displayUsername</div>
+                <div class="circle-rightbar-name">Your Circlely account</div>
+            </div>
+            <button type="button" class="circle-switch">Switch</button>
+        </div>
+
+        <div class="circle-suggestions-header">
+            <span class="circle-suggestions-title">Suggested for you</span>
+            <a href="#" class="circle-suggestions-see-all">See all</a>
+        </div>
+
+        @foreach (var name in new[] { "user_one", "user_two", "user_three", "user_four" })
+        {
+            <div class="circle-suggestion">
+                <div class="circle-user-avatar">
+                    <div class="circle-user-avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+                </div>
+                <div class="circle-suggestion-info">
+                    <span class="circle-suggestion-username">@name</span>
+                    <span class="circle-suggestion-followed-by">Suggested for you</span>
+                </div>
+                <button type="button" class="circle-follow-button">Follow</button>
+            </div>
+        }
+
+        <div class="circle-rightbar-footer">
+            <div>About · Help · Press · API · Jobs · Privacy · Terms</div>
+            <div style="margin-top:14px;">© 2026 CIRCLELY</div>
+        </div>
+
+    </aside>
+
+</div>
+
+<form id="likeTokenForm" style="display:none;">
+    @Html.AntiForgeryToken()
+</form>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* LIKE / UNLIKE */
+            document.querySelectorAll(".like-button").forEach(function (button) {
+                button.addEventListener("click", async function () {
+
+                    if (button.dataset.loading === "true") return;
+                    button.dataset.loading = "true";
+
+                    const postId = button.dataset.postId;
+                    const token = document.querySelector(
+                        '#likeTokenForm input[name="__RequestVerificationToken"]')?.value;
+
+                    try {
+                        const response = await fetch('@Url.Action("ToggleLike", "Home")', {
+                            method: "POST",
+                            headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
+                            body: "postId=" + encodeURIComponent(postId) +
+                                  "&__RequestVerificationToken=" + encodeURIComponent(token || "")
+                        });
+
+                        if (response.status === 401) {
+                            window.location.href = '@Url.Action("Login", "Account")';
+                            return;
+                        }
+                        if (!response.ok) return;
+
+                        const result = await response.json();
+                        if (!result.success) return;
+
+                        const icon = button.querySelector("i");
+                        button.classList.toggle("liked", result.isLiked);
+                        icon.classList.toggle("fa-solid", result.isLiked);
+                        icon.classList.toggle("fa-regular", !result.isLiked);
+
+                        const likeCount = button.closest(".circle-post").querySelector(".like-count");
+                        if (likeCount) likeCount.textContent = result.likeCount;
+                    }
+                    catch (error) {
+                        console.error("Like error:", error);
+                    }
+                    finally {
+                        button.dataset.loading = "false";
+                    }
+                });
+            });
+
+            /* SHARE */
+            document.querySelectorAll(".share-button").forEach(function (button) {
+                button.addEventListener("click", async function () {
+
+                    const postUrl = window.location.origin + "/Home/Index#post-" + button.dataset.postId;
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({ title: "Circlely", text: "Check out this post on Circlely", url: postUrl });
+                        } catch (error) { /* cancelled */ }
+                    }
+                    else {
+                        try {
+                            await navigator.clipboard.writeText(postUrl);
+                            alert("Post link copied!");
+                        } catch (error) {
+                            console.error("Share error:", error);
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+}

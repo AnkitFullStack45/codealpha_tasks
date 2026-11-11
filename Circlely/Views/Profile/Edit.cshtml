@@ -1,0 +1,145 @@
+﻿@model Circlely.ViewModels.EditProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="edit-profile-page">
+
+    <div class="edit-profile-card">
+
+        <div class="edit-profile-header">
+            <h2>Edit Profile</h2>
+            <p>Update your Circlely profile</p>
+        </div>
+
+
+        <form asp-controller="Profile"
+              asp-action="Edit"
+              method="post"
+              enctype="multipart/form-data">
+
+            @Html.AntiForgeryToken()
+
+
+            <!-- Profile Image -->
+
+            <div class="edit-profile-image">
+
+                @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                {
+                    <img src="@Model.ProfileImage"
+                         alt="Profile Image"
+                         id="profilePreview"
+                         class="edit-image" />
+                }
+                else
+                {
+                    <div class="edit-default-image"
+                         id="defaultImage">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+                }
+
+            </div>
+
+
+            <div class="image-upload">
+
+                <label for="Image">
+                    Change Profile Photo
+                </label>
+
+                <input asp-for="Image"
+                       type="file"
+                       accept="image/*"
+                       id="Image" />
+
+                <span asp-validation-for="Image"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="form-group">
+
+                <label asp-for="Email">
+                    Email
+                </label>
+
+                <input asp-for="Email"
+                       class="form-control"
+                       placeholder="Enter your email" />
+
+                <span asp-validation-for="Email"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+
+            <!-- Bio -->
+
+            <div class="form-group">
+
+                <label asp-for="Bio">
+                    Bio
+                </label>
+
+                <textarea asp-for="Bio"
+                          class="form-control"
+                          rows="4"
+                          maxlength="150"
+                          placeholder="Tell people about yourself..."></textarea>
+
+                <span asp-validation-for="Bio"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="edit-buttons">
+
+                <a asp-controller="Profile"
+                   asp-action="Index"
+                   class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit"
+                        class="save-btn">
+                    Save Changes
+                </button>
+
+            </div>
+            <div class="profile-settings">
+
+                <a asp-controller="Profile"
+                   asp-action="Logout"
+                   class="logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}
